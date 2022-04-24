@@ -1,20 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import Home from "./src/screens/Home";
+import Chat from "./src/screens/Chat";
+import ioniconsTabSelector from "./src/utils/ionicons-tab-selector";
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    return (
+        <NavigationContainer>
+            <Tab.Navigator
+                screenOptions={({route}) => ({
+                    tabBarShowLabel: false,
+                    tabBarIcon: ({focused}) => ioniconsTabSelector(route, focused),
+                    headerStyle: {backgroundColor: '#f30008'},
+                    headerTitleStyle: {color: 'white'}
+                })}
+                initialRouteName={"Home"}>
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+                <Tab.Screen
+                    name={"Home"}
+                    component={Home}
+                    options={{title: 'Главная'}}
+                />
+
+                <Tab.Screen
+                    name={"Chat"}
+                    component={Chat}
+                    options={{title: 'Чат'}}
+                />
+
+            </Tab.Navigator>
+        </NavigationContainer>
+    );
+}
