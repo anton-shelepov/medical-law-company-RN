@@ -1,5 +1,6 @@
 import Ionicons from "react-native-vector-icons/Ionicons";
 import {ParamListBase, RouteProp} from "@react-navigation/native";
+import React from "react";
 
 interface IProps {
     route: string

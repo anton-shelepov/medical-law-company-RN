@@ -1,36 +1,32 @@
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import Home from "./src/screens/Home";
-import Chat from "./src/screens/Chat";
-import ioniconsTabSelector from "./src/utils/ionicons-tab-selector";
+import React from "react";
+import 'react-native-gesture-handler';
+import {Provider} from "react-redux";
+import {StatusBar} from "expo-status-bar";
+import store from "./src/redux/store";
+import DrawerNavigator from "./src/common/navigators/DrawerNavigator";
+import {NavigationContainer} from "@react-navigation/native";
+import {ThemeProvider} from "styled-components";
+import {useAppSelector} from "./src/hooks/useAppSelector";
+import {RootState} from "./src/redux/store";
 
-const Tab = createBottomTabNavigator();
-
-export default function App() {
+export default function AppProvider() {
     return (
-        <NavigationContainer>
-            <Tab.Navigator
-                screenOptions={({route}) => ({
-                    tabBarShowLabel: false,
-                    tabBarIcon: ({focused}) => ioniconsTabSelector(route, focused),
-                    headerStyle: {backgroundColor: '#f30008'},
-                    headerTitleStyle: {color: 'white'}
-                })}
-                initialRouteName={"Home"}>
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    )
+}
 
-                <Tab.Screen
-                    name={"Home"}
-                    component={Home}
-                    options={{title: 'Главная'}}
-                />
+function App() {
 
-                <Tab.Screen
-                    name={"Chat"}
-                    component={Chat}
-                    options={{title: 'Чат'}}
-                />
+    const theme = useAppSelector((state: RootState) => state.theme.theme)
 
-            </Tab.Navigator>
-        </NavigationContainer>
+    return (
+        <ThemeProvider theme={theme}>
+            <StatusBar backgroundColor={"#f30008"} style={"light"}/>
+            <NavigationContainer>
+                <DrawerNavigator/>
+            </NavigationContainer>
+        </ThemeProvider>
     );
 }

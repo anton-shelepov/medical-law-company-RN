@@ -1,7 +1,15 @@
-const homeReducer = (action: any) => {
+
+const initialState = {
+
+}
+
+const homeReducer = (action: any, state = initialState) => {
     switch (action) {
         case '':
-            return
+            return state
+
+        default:
+            return state
     }
 }
 
