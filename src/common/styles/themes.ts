@@ -1,4 +1,4 @@
-import {Theme} from "../redux/reducers/theme-reducer/types";
+import {Theme} from "../../redux/reducers/theme-reducer/types";
 
 export const darkTheme: Theme = {
     mode: "dark",

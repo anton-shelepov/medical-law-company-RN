@@ -1,9 +1,9 @@
 import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import Chat from "../../screens/Chat";
-import ioniconsTabSelector from "../scripts/ionicons-tab-selector";
-import Home from "../../screens/Home";
+import Chat from "../screens/Chat";
+import ioniconsTabSelector from "../common/scripts/ionicons-tab-selector";
+import Home from "../screens/Home";
 
 const Tab = createBottomTabNavigator();
 

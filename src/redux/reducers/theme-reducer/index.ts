@@ -1,4 +1,4 @@
-import {lightTheme} from "../../../styles/themes";
+import {lightTheme} from "../../../common/styles/themes";
 import {IThemeState, ThemeActions} from "./types";
 import {SWITCH_THEME} from "../../../common/constants/action-types";
 

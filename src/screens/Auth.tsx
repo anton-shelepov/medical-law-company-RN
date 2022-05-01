@@ -1,20 +1,29 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
+import styled from "styled-components";
+import {darkTheme} from "../common/styles/themes";
+import logo from "../../assets/images/logo.png";
 
 const Auth: React.FC = () => {
     return (
-        <View style={s.container}>
-            <Text>Auth</Text>
-        </View>
+        <Container>
+            <Logo/>
+        </Container>
     )
 }
 
-const s = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-    }
-})
+const Container = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  background-color: ${darkTheme.BACKGROUND_COLOR};
+`
+
+const Logo = styled.Image.attrs({
+    source: logo,
+})`
+  width: 200px;
+  height: 68px;
+`
+
 
 export default Auth;
