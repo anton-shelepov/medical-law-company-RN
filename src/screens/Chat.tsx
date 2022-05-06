@@ -1,20 +1,12 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
+import Container from "../components/styles/Container.styled";
 
 const Chat: React.FC = () => {
     return (
-        <View style={s.container}>
-            <Text>Chat</Text>
-        </View>
+        <Container>
+
+        </Container>
     )
 }
-
-const s = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-    }
-})
 
 export default Chat;

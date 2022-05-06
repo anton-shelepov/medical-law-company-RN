@@ -1,6 +1,6 @@
 import {Action} from "redux";
 import {ActionType} from "typesafe-actions";
-import * as actions from "./theme-actions";
+import * as actions from "./themeActions";
 import {SWITCH_THEME} from "../../../common/constants/action-types";
 
 // Root reducer state
@@ -17,6 +17,10 @@ export type Theme = {
     TEXT_COLOR: string,
     BUTTON_COLOR: string,
     BUTTON_TEXT_COLOR: string,
+    TAB_BAR_BACKGROUND_COLOR: string,
+    TAB_BAR_ICONS_COLOR: string,
+    TAB_BAR_BORDER_TOP_COLOR: string,
+    CARD_BACKGROUND_COLOR: string,
 }
 
 // Actions

@@ -1,5 +1,6 @@
 import React from "react";
-import styled from "styled-components";
+import Container from "../components/styles/Container.styled";
+
 
 const Home: React.FC = () => {
     return (
@@ -8,12 +9,5 @@ const Home: React.FC = () => {
         </Container>
     )
 }
-
-const Container = styled.View`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  background-color: ${p => p.theme.BACKGROUND_COLOR};
-`
 
 export default Home;

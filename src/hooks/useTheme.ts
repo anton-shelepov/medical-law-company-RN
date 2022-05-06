@@ -1,8 +1,8 @@
 import {useAppSelector} from "./useAppSelector";
 import {useAppDispatch} from "./useAppDispatch";
 import {darkTheme, lightTheme} from "../common/styles/themes";
-import {switchTheme} from "../redux/reducers/theme-reducer/theme-actions";
-import {Theme} from "../redux/reducers/theme-reducer/types";
+import {switchTheme} from "../redux/reducers/themeReducer/themeActions";
+import {Theme} from "../redux/reducers/themeReducer/types";
 
 export const useTheme = (): [theme: Theme, toggleTheme: (themeMode: "light" | "dark") => void]  => {
 

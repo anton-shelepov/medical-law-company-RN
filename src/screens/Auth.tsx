@@ -1,29 +1,16 @@
 import React from "react";
-import styled from "styled-components";
-import {darkTheme} from "../common/styles/themes";
-import logo from "../../assets/images/logo.png";
+import DarkContainer from "../components/styles/modificators/DarkContainer.styled";
+import Logo from "../components/styles/Logo.styled";
+import AuthForm from "../components/forms/AuthForm/AuthForm";
+import { StatusBar } from "expo-status-bar";
 
 const Auth: React.FC = () => {
     return (
-        <Container>
-            <Logo/>
-        </Container>
+        <DarkContainer>
+            <Logo />
+            <AuthForm />
+        </DarkContainer>
     )
 }
-
-const Container = styled.View`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  background-color: ${darkTheme.BACKGROUND_COLOR};
-`
-
-const Logo = styled.Image.attrs({
-    source: logo,
-})`
-  width: 200px;
-  height: 68px;
-`
-
 
 export default Auth;

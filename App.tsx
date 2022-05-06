@@ -1,20 +1,21 @@
 import React from "react";
 import 'react-native-gesture-handler';
-import {Provider} from "react-redux";
-import {StatusBar} from "expo-status-bar";
+import { Provider } from "react-redux";
+import { StatusBar } from "expo-status-bar";
 import store from "./src/redux/store";
 import DrawerNavigator from "./src/navigators/DrawerNavigator";
-import {NavigationContainer} from "@react-navigation/native";
-import {ThemeProvider} from "styled-components";
-import {useAppSelector} from "./src/hooks/useAppSelector";
+import { NavigationContainer } from "@react-navigation/native";
+import { ThemeProvider } from "styled-components";
+import { useAppSelector } from "./src/hooks/useAppSelector";
 import StackNavigator from "./src/navigators/StackNavigator";
 import useFonts from "./src/hooks/useFonts";
 import AppLoading from "expo-app-loading";
+import { globalStyles } from "./src/common/styles/globalStyles";
 
 export default function AppProvider() {
     return (
         <Provider store={store}>
-            <App/>
+            <App />
         </Provider>
     )
 }
@@ -28,21 +29,21 @@ function App() {
 
     if (!isFontsLoaded) {
         return (
-            <AppLoading/>
+            <AppLoading />
         )
     }
 
     return (
         <ThemeProvider theme={theme}>
-            <StatusBar backgroundColor={"#f30008"} style={"light"}/>
+            <StatusBar style={"light"} backgroundColor={globalStyles.RED_COLOR_TONE} />
             <NavigationContainer>
                 {
                     isAuth
                         ? (
-                            <DrawerNavigator/>
+                            <DrawerNavigator />
                         )
                         : (
-                            <StackNavigator/>
+                            <StackNavigator />
                         )
                 }
             </NavigationContainer>
