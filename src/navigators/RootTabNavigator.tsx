@@ -1,8 +1,8 @@
 import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Chat from "../screens/Chat";
-import ioniconsTabSelector from "../common/utils/ioniconsTabSelector";
+import ioniconsTabSelector from "../common/utils/IoniconsTabSelector";
 import Home from "../screens/Home";
 import Recommendations from "../screens/Recommendations";
 import { useTheme } from "../hooks/useTheme";
@@ -10,7 +10,7 @@ import { globalStyles } from "../common/styles/globalStyles";
 
 const Tab = createBottomTabNavigator();
 
-const TabNavigator = ({navigation}) => {
+const RootTabNavigator = ({navigation}) => {
 
     const [theme] = useTheme()
 
@@ -59,4 +59,4 @@ const TabNavigator = ({navigation}) => {
     )
 }
 
-export default TabNavigator
+export default RootTabNavigator

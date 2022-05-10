@@ -1,7 +1,7 @@
 import {AnyAction} from "redux";
 
 const initialState = {
-    isAuth: true
+    isUserAuth: true
 }
 
 const authReducer = (state = initialState, action: AnyAction) => {

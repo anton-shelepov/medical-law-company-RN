@@ -1,4 +1,4 @@
-import logo from "../../../assets/images/logo.png";
+import logo from "../../../../assets/images/logo.png";
 import styled from "styled-components/native";
 import { ImageSourcePropType } from "react-native";
 

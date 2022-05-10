@@ -21,6 +21,9 @@ export type Theme = {
     TAB_BAR_ICONS_COLOR: string,
     TAB_BAR_BORDER_TOP_COLOR: string,
     CARD_BACKGROUND_COLOR: string,
+    CARD_BORDER_COLOR: string,
+    IN_PROCESS_COLOR: string,
+    READY_COLOR: string,
 }
 
 // Actions

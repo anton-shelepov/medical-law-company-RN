@@ -3,12 +3,7 @@ import { ParamListBase, RouteProp } from "@react-navigation/native";
 import React from "react";
 import { useTheme } from "../../hooks/useTheme";
 
-interface IProps {
-    route: string
-    focused: boolean
-}
-
-const ioniconsTabSelector = (route: RouteProp<ParamListBase, string>, focused: boolean) => {
+const IoniconsTabSelector = (route: RouteProp<ParamListBase, string>, focused: boolean) => {
 
     const [theme] = useTheme()
 
@@ -29,4 +24,4 @@ const ioniconsTabSelector = (route: RouteProp<ParamListBase, string>, focused: b
     return <Ionicons name={iconName} size={23} color={theme.TAB_BAR_ICONS_COLOR} />
 }
 
-export default ioniconsTabSelector
+export default IoniconsTabSelector

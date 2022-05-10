@@ -1,3 +1,3 @@
 export const globalStyles = {
-    RED_COLOR_TONE: "#f30008"
+    RED_COLOR_TONE: "#f30008",
 }

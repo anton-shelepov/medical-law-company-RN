@@ -1,0 +1,1 @@
+export type RecommendationsActions = ActionType<typeof actions>;

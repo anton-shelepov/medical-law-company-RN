@@ -10,7 +10,10 @@ export const darkTheme: Theme = {
     TAB_BAR_ICONS_COLOR: "#ffffff",
     TAB_BAR_BORDER_TOP_COLOR: "#525252",
     CARD_BACKGROUND_COLOR: "#292929",
-}
+    CARD_BORDER_COLOR: "#363636",
+    IN_PROCESS_COLOR: "rgba(197,197,129,0.63)",
+    READY_COLOR: "#05a600",
+};
 
 export const lightTheme: Theme = {
     mode: "light",
@@ -22,4 +25,7 @@ export const lightTheme: Theme = {
     TAB_BAR_ICONS_COLOR: "#3a3a3a",
     TAB_BAR_BORDER_TOP_COLOR: "#d0d0d0",
     CARD_BACKGROUND_COLOR: "#ffffff",
+    CARD_BORDER_COLOR: "#efefef",
+    IN_PROCESS_COLOR: "rgba(162,159,40,0.7)",
+    READY_COLOR: "#05a600",
 };

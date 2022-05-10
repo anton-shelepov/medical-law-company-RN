@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { Theme } from "../../redux/reducers/themeReducer/types";
+import { Theme } from "../../../redux/reducers/themeReducer/types";
 
 interface IContainerProps {
     theme: Theme

@@ -1,6 +1,6 @@
 import React, { BaseSyntheticEvent } from "react";
-import ButtonArea from "../styles/ButtonArea.styled";
-import ButtonText from "../styles/ButtonText.styled";
+import ButtonArea from "../styles/common/ButtonArea.styled";
+import ButtonText from "../styles/common/ButtonText.styled";
 
 interface IProps {
     title: string;

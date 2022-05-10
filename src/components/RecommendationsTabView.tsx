@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useWindowDimensions } from "react-native";
+import { FlatList, useWindowDimensions } from "react-native";
 import { TabBar, TabView } from "react-native-tab-view";
-import Logo from "./styles/Logo.styled";
 import { useTheme } from "../hooks/useTheme";
-import TabText from "./styles/TabText.styled";
+import TabText from "./styles/common/TabText.styled";
 import RecommendationCard from "./RecommendationCard";
 
 const RecommendationsTabView: React.FC = () => {
@@ -17,14 +16,32 @@ const RecommendationsTabView: React.FC = () => {
 
     const [theme] = useTheme()
 
+    const data = [
+        {id: 'das', title: ''},
+        {id: 'das', title: ''},
+        {id: 'das', title: ''},
+        {id: 'das', title: ''},
+        {id: 'das', title: ''},
+    ]
+
     const renderScene = ({route}) => {
         switch (route.key) {
 
             case 'doctor':
-                return <RecommendationCard />;
+                return (
+                    <FlatList
+                        data={data}
+                        renderItem={() => <RecommendationCard />}
+                    />
+                )
 
             case 'lawyer':
-                return <RecommendationCard />;
+                return (
+                    <FlatList
+                        data={data}
+                        renderItem={() => <RecommendationCard />}
+                    />
+                )
 
             default:
                 return null;
@@ -45,7 +62,7 @@ const RecommendationsTabView: React.FC = () => {
                     {...props}
                     style={{backgroundColor: theme.TAB_BAR_BACKGROUND_COLOR}}
                     indicatorStyle={{backgroundColor: 'red'}}
-                    renderLabel={({route, focused }) => (
+                    renderLabel={({route, focused}) => (
                         <TabText focused={focused}>{route.title}</TabText>
                     )}
                 />
