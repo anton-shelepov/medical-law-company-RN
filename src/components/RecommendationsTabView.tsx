@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { FlatList, useWindowDimensions } from "react-native";
 import { TabBar, TabView } from "react-native-tab-view";
+import { useAppSelector } from "../hooks/useAppSelector";
 import { useTheme } from "../hooks/useTheme";
+import RecommendationListCard from "./RecommendationListCard";
 import TabText from "./styles/common/TabText.styled";
-import RecommendationCard from "./RecommendationCard";
 
 const RecommendationsTabView: React.FC = () => {
 
@@ -14,15 +15,9 @@ const RecommendationsTabView: React.FC = () => {
         {key: 'lawyer', title: 'Юрист'}
     ])
 
-    const [theme] = useTheme()
+    const recommendationsData = useAppSelector(state => state.recommendations.recommendations)
 
-    const data = [
-        {id: 'das', title: ''},
-        {id: 'das', title: ''},
-        {id: 'das', title: ''},
-        {id: 'das', title: ''},
-        {id: 'das', title: ''},
-    ]
+    const [theme] = useTheme()
 
     const renderScene = ({route}) => {
         switch (route.key) {
@@ -30,16 +25,18 @@ const RecommendationsTabView: React.FC = () => {
             case 'doctor':
                 return (
                     <FlatList
-                        data={data}
-                        renderItem={() => <RecommendationCard />}
+                        data={recommendationsData}
+                        renderItem={info => (info.item.employeePosition === "doctor") &&
+                            <RecommendationListCard recommendationData={info.item} />}
                     />
                 )
 
             case 'lawyer':
                 return (
                     <FlatList
-                        data={data}
-                        renderItem={() => <RecommendationCard />}
+                        data={recommendationsData}
+                        renderItem={info => (info.item.employeePosition === "lawyer") &&
+                            <RecommendationListCard recommendationData={info.item} />}
                     />
                 )
 
@@ -55,7 +52,6 @@ const RecommendationsTabView: React.FC = () => {
             onIndexChange={setIndex}
             navigationState={{index, routes}}
             initialLayout={{width: layout.width}}
-            renderScene={renderScene}
             style={{backgroundColor: theme.BACKGROUND_COLOR,}}
             renderTabBar={props =>
                 <TabBar
@@ -67,6 +63,7 @@ const RecommendationsTabView: React.FC = () => {
                     )}
                 />
             }
+            renderScene={renderScene}
         />
     )
 }

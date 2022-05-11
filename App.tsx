@@ -21,7 +21,7 @@ export default function AppProvider() {
 
 function App() {
 
-    const theme = useAppSelector(state => state.theme.theme)
+    const theme = useAppSelector(state => state.theme.currentTheme)
 
     const isFontsLoaded = useFonts()
 

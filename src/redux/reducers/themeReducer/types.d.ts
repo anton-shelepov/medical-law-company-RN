@@ -6,7 +6,7 @@ import {SWITCH_THEME} from "../../../common/constants/action-types";
 // Root reducer state
 
 export interface IThemeState {
-    theme: Theme,
+    currentTheme: Theme,
 }
 
 // Root reducer parts
@@ -23,7 +23,7 @@ export type Theme = {
     CARD_BACKGROUND_COLOR: string,
     CARD_BORDER_COLOR: string,
     IN_PROCESS_COLOR: string,
-    READY_COLOR: string,
+    DONE_COLOR: string,
 }
 
 // Actions

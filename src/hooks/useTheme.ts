@@ -6,7 +6,7 @@ import {Theme} from "../redux/reducers/themeReducer/types";
 
 export const useTheme = (): [theme: Theme, toggleTheme: (themeMode: "light" | "dark") => void]  => {
 
-    const theme = useAppSelector(state => state.theme.theme)
+    const theme = useAppSelector(state => state.theme.currentTheme)
     const dispatch = useAppDispatch()
 
     function toggleTheme(themeMode: "light" | "dark"){

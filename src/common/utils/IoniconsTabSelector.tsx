@@ -13,7 +13,7 @@ const IoniconsTabSelector = (route: RouteProp<ParamListBase, string>, focused: b
             iconName = focused ? 'ios-home' : 'ios-home-outline'
             break;
 
-        case 'Chat':
+        case 'Chats':
             iconName = focused ? 'ios-chatbubble-ellipses-sharp' : 'ios-chatbubble-ellipses-outline'
             break;
 

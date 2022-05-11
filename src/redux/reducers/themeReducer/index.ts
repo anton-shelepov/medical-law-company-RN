@@ -3,7 +3,7 @@ import {IThemeState, ThemeActions} from "./types";
 import {SWITCH_THEME} from "../../../common/constants/action-types";
 
 const initialState: IThemeState = {
-    theme: lightTheme
+    currentTheme: darkTheme
 }
 
 const themeReducer = (state: IThemeState = initialState, action: ThemeActions): IThemeState => {
@@ -12,7 +12,7 @@ const themeReducer = (state: IThemeState = initialState, action: ThemeActions): 
         case SWITCH_THEME:
             return {
                 ...state,
-                theme: action.theme
+                currentTheme: action.theme
             }
 
         default:

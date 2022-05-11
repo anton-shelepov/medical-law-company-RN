@@ -12,7 +12,7 @@ export const darkTheme: Theme = {
     CARD_BACKGROUND_COLOR: "#292929",
     CARD_BORDER_COLOR: "#363636",
     IN_PROCESS_COLOR: "rgba(197,197,129,0.63)",
-    READY_COLOR: "#05a600",
+    DONE_COLOR: "#05a600",
 };
 
 export const lightTheme: Theme = {
@@ -27,5 +27,5 @@ export const lightTheme: Theme = {
     CARD_BACKGROUND_COLOR: "#ffffff",
     CARD_BORDER_COLOR: "#efefef",
     IN_PROCESS_COLOR: "rgba(162,159,40,0.7)",
-    READY_COLOR: "#05a600",
+    DONE_COLOR: "#05a600",
 };

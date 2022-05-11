@@ -1,24 +1,10 @@
 import styled from "styled-components/native";
 import Text from "./common/Text.styled";
-import { Theme } from "../../redux/reducers/themeReducer/types";
 
-interface IWrapperProps {
-    theme: Theme
-}
 
 interface IStatusTextProps {
     color: string,
 }
-
-export const Wrapper = styled.TouchableOpacity.attrs({
-    activeOpacity: .7
-})<IWrapperProps>`
-  width: 100%;
-  padding: 20px 15px;
-  background-color: ${({theme}) => theme.CARD_BACKGROUND_COLOR};
-  border-bottom-color: ${({theme}) => theme.CARD_BORDER_COLOR};
-  border-bottom-width: 1px;
-`
 
 export const Title = styled.View`
   flex-direction: row;
@@ -46,6 +32,6 @@ export const StatusText = styled(Text)<IStatusTextProps>`
   color: ${({color}) => color}
 `
 
-export const MessageText = styled(Text)`
-  
-`
+export const RecommendationText = styled(Text).attrs({
+    numberOfLines: 3,
+})``

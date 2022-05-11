@@ -16,6 +16,7 @@ export type RootStackParamList = {
     RootDrawNavigator,
     RecommendationDetails,
     Auth,
+    Chat,
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

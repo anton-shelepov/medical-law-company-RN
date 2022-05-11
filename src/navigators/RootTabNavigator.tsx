@@ -1,12 +1,13 @@
-import React from "react";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Chat from "../screens/Chat";
+import React from "react";
+import { TouchableOpacity } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { globalStyles } from "../common/styles/globalStyles";
 import ioniconsTabSelector from "../common/utils/IoniconsTabSelector";
+import { useTheme } from "../hooks/useTheme";
+import Chats from "../screens/Chats";
 import Home from "../screens/Home";
 import Recommendations from "../screens/Recommendations";
-import { useTheme } from "../hooks/useTheme";
-import { globalStyles } from "../common/styles/globalStyles";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,13 +19,14 @@ const RootTabNavigator = ({navigation}) => {
         <Tab.Navigator
             screenOptions={({route}) => ({
                 headerLeft: () => (
-                    <Ionicons
-                        onPress={() => navigation.openDrawer()}
-                        name={"md-menu-outline"}
-                        size={40}
-                        color={"white"}
-                        style={{marginLeft: 10}}
-                    />
+                    <TouchableOpacity activeOpacity={.8} onPress={() => navigation.openDrawer()}>
+                        <Ionicons
+                            name={"md-menu-outline"}
+                            size={40}
+                            color={"white"}
+                            style={{marginLeft: 10}}
+                        />
+                    </TouchableOpacity>
                 ),
                 tabBarShowLabel: false,
                 tabBarIcon: ({focused}) => ioniconsTabSelector(route, focused),
@@ -44,9 +46,9 @@ const RootTabNavigator = ({navigation}) => {
             />
 
             <Tab.Screen
-                name={"Chat"}
-                component={Chat}
-                options={{title: 'Чат'}}
+                name={"Chats"}
+                component={Chats}
+                options={{title: 'Чаты'}}
             />
 
             <Tab.Screen
