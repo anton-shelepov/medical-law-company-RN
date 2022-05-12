@@ -1,29 +1,30 @@
-import { IChatsState, MessageTypes } from "./types.d";
+import { messageTypes } from "../../../common/constants/enums";
+import { IChatsState } from "./types.d";
 
 const initialState: IChatsState = {
     chats: [
         {
             id: 1,
-            messageType: MessageTypes.FROM,
-            avatarSrc: '',
+            messageType: messageTypes.FROM,
+            userImageSrc: 'https://i1.wp.com/avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar-1.png?ssl=1',
             chatName: "Врач",
-            author: "Иванов Иван Иванович",
+            userName: "Иванов Иван Иванович",
             message: "Текст (от лат. textus — ткань; сплетение, сочетание) — зафиксированная на каком-либо материальном носителе человеческая мысль; в общем плане связная и полная последовательность символов.",
         },
         {
             id: 2,
-            messageType: MessageTypes.FROM,
-            avatarSrc: '',
+            messageType: messageTypes.FROM,
+            userImageSrc: 'https://i1.wp.com/avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar-1.png?ssl=1',
             chatName: "Юрист",
-            author: "Иванов Иван Иванович",
+            userName: "Иванов Иван Иванович",
             message: "Текст (от лат. textus — ткань; сплетение, сочетание) — зафиксированная на каком-либо материальном носителе человеческая мысль; в общем плане связная и полная последовательность символов.",
         },
         {
             id: 3,
-            messageType: MessageTypes.FROM,
-            avatarSrc: '',
+            messageType: messageTypes.FROM,
+            userImageSrc: 'https://i1.wp.com/avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar-1.png?ssl=1',
             chatName: "Менеджер",
-            author: "Иванов Иван Иванович",
+            userName: "Иванов Иван Иванович",
             message: "Текст (от лат. textus — ткань; сплетение, сочетание) — зафиксированная на каком-либо материальном носителе человеческая мысль; в общем плане связная и полная последовательность символов.",
         },
 

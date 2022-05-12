@@ -1,8 +1,8 @@
 import React from "react";
 import { FlatList, TouchableOpacity } from "react-native";
 import ChatListCard from "../components/ChatListCard";
-import Container from "../components/styles/common/Container.styled";
 import { useAppSelector } from "../hooks/useAppSelector";
+import Container from "../components/_common/_styles/Container.styled";
 
 const Chats: React.FC = () => {
 

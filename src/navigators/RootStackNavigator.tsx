@@ -1,7 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Chat from "../screens/Chat";
 import RootDrawerNavigator from "./RootDrawerNavigator";
-import Auth from "../screens/Auth";
 import { useAppSelector } from "../hooks/useAppSelector";
 import AuthStackNavigator from "./AuthStackNavigator";
 import RecommendationDetails from "../screens/RecommendationDetails";
@@ -16,7 +16,7 @@ export type RootStackParamList = {
     RootDrawNavigator,
     RecommendationDetails,
     Auth,
-    Chat,
+    Chat: {id: number},
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -53,6 +53,10 @@ const RootStackNavigator = () => {
                                 name={"RecommendationDetails"}
                                 component={RecommendationDetails}
                                 options={{title: "Рекомендация"}}
+                            />
+                            <Stack.Screen
+                                name={"Chat"}
+                                component={Chat}
                             />
                         </>
                     )

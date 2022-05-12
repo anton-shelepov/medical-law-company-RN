@@ -1,7 +1,7 @@
 import {Action} from "redux";
 import {ActionType} from "typesafe-actions";
 import * as actions from "./themeActions";
-import {SWITCH_THEME} from "../../../common/constants/action-types";
+import {SWITCH_THEME} from "../../../common/constants/actionTypes";
 
 // Root reducer state
 

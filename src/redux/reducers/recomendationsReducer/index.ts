@@ -1,11 +1,12 @@
-import { IRecommendationsState, RecommendationStatuses } from "./types.d";
+import { recommendationStatuses } from "../../../common/constants/enums";
+import { IRecommendationsState } from "./types.d";
 
 const initialState: IRecommendationsState = {
     recommendations: [
         {
             id: 1,
             title: "Кардиолог",
-            status: RecommendationStatuses.IN_PROCESS,
+            status: recommendationStatuses.IN_PROCESS,
             executionTime: new Date().toLocaleDateString("en-GB").replace(/\//g, '.'),
             recommendationText: "Текст (от лат. textus — ткань; сплетение, сочетание) — зафиксированная на каком-либо материальном носителе человеческая мысль; в общем плане связная и полная последовательность символов.",
             employeePosition: "lawyer",
@@ -13,7 +14,7 @@ const initialState: IRecommendationsState = {
         {
             id: 2,
             title: "Кардиолог",
-            status: RecommendationStatuses.IN_PROCESS,
+            status: recommendationStatuses.IN_PROCESS,
             executionTime: new Date().toLocaleDateString("en-GB").replace(/\//g, '.'),
             recommendationText: "Текст (от лат. textus — ткань; сплетение, сочетание) — зафиксированная на каком-либо материальном носителе человеческая мысль; в общем плане связная и полная последовательность символов.",
             employeePosition: "lawyer",
@@ -21,7 +22,7 @@ const initialState: IRecommendationsState = {
         {
             id: 3,
             title: "Кардиолог",
-            status: RecommendationStatuses.IN_PROCESS,
+            status: recommendationStatuses.IN_PROCESS,
             executionTime: new Date().toLocaleDateString("en-GB").replace(/\//g, '.'),
             recommendationText: "Текст (от лат. textus — ткань; сплетение, сочетание) — зафиксированная на каком-либо материальном носителе человеческая мысль; в общем плане связная и полная последовательность символов.",
             employeePosition: "doctor",

@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import DarkContainer from "../components/styles/common/modificators/DarkContainer.styled";
-import Logo from "../components/styles/common/Logo.styled";
-import AuthForm from "../components/forms/AuthForm/AuthForm";
 import { setStatusBarBackgroundColor } from "expo-status-bar";
+import React, { useEffect } from "react";
+import AuthForm from "../components/_common/forms/AuthForm/AuthForm";
 import { useTheme } from "../hooks/useTheme";
+import DarkContainer from "../components/_common/_styles/modificators/DarkContainer.styled";
+import Logo from "../components/_common/_styles/Logo.styled";
 
 const Auth: React.FC = () => {
 

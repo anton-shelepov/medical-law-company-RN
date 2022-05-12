@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../components/styles/common/Container.styled";
+import Container from "../components/_common/_styles/Container.styled";
 
 
 const Home: React.FC = () => {

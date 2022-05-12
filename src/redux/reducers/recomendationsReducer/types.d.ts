@@ -1,5 +1,6 @@
 import {Action} from "redux";
 import {ActionType} from "typesafe-actions";
+import { recommendationStatuses } from "../../../common/constants/enums";
 import * as actions from "./recommendationsActions";
 
 // Root reducer state
@@ -13,15 +14,10 @@ export interface IRecommendationsState {
 export type RecommendationsItem = {
     id: number,
     title: string,
-    status: RecommendationStatuses,
+    status: recommendationStatuses,
     executionTime: string,
     recommendationText: string,
     employeePosition: string,
-}
-
-export enum RecommendationStatuses {
-    IN_PROCESS = "IN_PROCESS",
-    DONE = "DONE",
 }
 
 // Actions

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { FlatList, useWindowDimensions } from "react-native";
 import { TabBar, TabView } from "react-native-tab-view";
-import { useAppSelector } from "../hooks/useAppSelector";
-import { useTheme } from "../hooks/useTheme";
-import RecommendationListCard from "./RecommendationListCard";
-import TabText from "./styles/common/TabText.styled";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { useTheme } from "../../hooks/useTheme";
+import RecommendationListCard from "../RecommendationListCard";
+import TabText from "../_common/_styles/TabText.styled";
 
 const RecommendationsTabView: React.FC = () => {
 

@@ -1,19 +1,14 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
-import IoniconsSelector from "../common/utils/IoniconsSelector";
-import { useTheme } from "../hooks/useTheme";
-import { RootStackParamList } from "../navigators/RootStackNavigator";
-import { RecommendationsItem, RecommendationStatuses } from "../redux/reducers/recomendationsReducer/types.d";
-import {
-    ExecutionTime,
-    RecommendationText,
-    Status,
-    StatusText,
-    Title,
-    TitleText,
-} from "./styles/RecommendationListCard.styled";
-import ListItemWrapper from "./styles/common/ListItemWrapper.styled";
+import { recommendationStatuses } from "../../common/constants/enums";
+import IoniconsSelector from "../../common/utils/IoniconsSelector";
+import { useTheme } from "../../hooks/useTheme";
+import { RootStackParamList } from "../../navigators/RootStackNavigator";
+import { RecommendationsItem } from "../../redux/reducers/recomendationsReducer/types";
+import ListItemWrapper from "../_common/_styles/ListItemWrapper.styled";
+import { ExecutionTime, RecommendationText, Status, StatusText, Title, TitleText, } from "./styles";
+
 
 interface IProps {
     recommendationData: RecommendationsItem
@@ -33,7 +28,7 @@ const RecommendationListCard: React.FC<IProps> =
         const [theme] = useTheme()
         const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
 
-        const isInProcess = (status === RecommendationStatuses.IN_PROCESS)
+        const isInProcess = (status === recommendationStatuses.IN_PROCESS)
 
         const onHandlePress = () => {
             navigation.navigate("RecommendationDetails")

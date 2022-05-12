@@ -9,6 +9,7 @@ const useFonts = () => {
         BebasNeue_400: require('../../assets/fonts/BebasNeue-Regular.ttf'),
         BebasNeue_700: require('../../assets/fonts/BebasNeue-Bold.ttf'),
         Manrope_400: require('../../assets/fonts/Manrope-Regular.ttf'),
+        Manrope_600: require('../../assets/fonts/Manrope-SemiBold.ttf'),
         Manrope_700: require('../../assets/fonts/Manrope-Bold.ttf'),
     }).then(() => setIsFontsLoaded(true))
 

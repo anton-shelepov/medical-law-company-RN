@@ -1,12 +1,11 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
-import { View } from "react-native";
-import { RootStackParamList } from "../navigators/RootStackNavigator";
-import { ChatsItem } from "../redux/reducers/chatsReducer/types";
-import { Author, Avatar, BlockLeft, BlockRight, ChatName, Message } from "./styles/ChatListCard.styled";
-
-import ListItemWrapper from "./styles/common/ListItemWrapper.styled";
+import { RootStackParamList } from "../../navigators/RootStackNavigator";
+import { ChatsItem } from "../../redux/reducers/chatsReducer/types";
+import { ChatName, CompanionName, Message, BlockRight, BlockLeft } from "./styles";
+import ListItemWrapper from "../_common/_styles/ListItemWrapper.styled";
+import UserImage from "../_common/_styles/UserImage.styled";
 
 interface IProps {
     chatData: ChatsItem
@@ -18,26 +17,28 @@ const ChatListCard: React.FC<IProps> =
              chatName,
              message,
              id,
-             avatarSrc,
+             userImageSrc,
              messageType,
-             author
+             userName,
          }
      }) => {
 
         const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
 
         const onHandlePress = () => {
-            navigation.navigate("Chat")
+            navigation.navigate("Chat", {
+                id,
+            })
         }
 
         return (
             <ListItemWrapper direction="row" onPress={onHandlePress}>
                 <BlockLeft>
-                    <Avatar source={{uri: "https://publicdomainvectors.org/tn_img/Male-Avatar-2.webp"}} />
+                    <UserImage source={{uri: userImageSrc}} />
                 </BlockLeft>
                 <BlockRight>
                     <ChatName>{chatName}</ChatName>
-                    <Author>{author}</Author>
+                    <CompanionName>{userName}</CompanionName>
                     <Message>{message}</Message>
                 </BlockRight>
             </ListItemWrapper>

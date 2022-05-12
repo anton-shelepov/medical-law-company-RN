@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import TextInput from "../styles/common/TextInput.styled";
+import TextInput from "../_styles/TextInput.styled";
 import { ControllerRenderProps, FieldValues } from "react-hook-form";
-import ErrorText from "../styles/common/ErrorText.styled";
+import ErrorText from "../_styles/ErrorText.styled";
 
 interface IProps {
     placeholder: string;

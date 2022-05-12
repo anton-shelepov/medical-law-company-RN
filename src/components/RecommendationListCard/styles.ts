@@ -1,6 +1,5 @@
 import styled from "styled-components/native";
-import Text from "./common/Text.styled";
-
+import Text from "../_common/_styles/Text.styled";
 
 interface IStatusTextProps {
     color: string,
