@@ -13,6 +13,8 @@ export const darkTheme: Theme = {
     CARD_BORDER_COLOR: "#363636",
     IN_PROCESS_COLOR: "rgba(197,197,129,0.63)",
     DONE_COLOR: "#05a600",
+    MESSAGE_TO_BACKGROUND_COLOR: "#3a3a3a",
+    MESSAGE_FROM_BACKGROUND_COLOR: "#292929",
 };
 
 export const lightTheme: Theme = {
@@ -28,4 +30,6 @@ export const lightTheme: Theme = {
     CARD_BORDER_COLOR: "#efefef",
     IN_PROCESS_COLOR: "rgba(162,159,40,0.7)",
     DONE_COLOR: "#05a600",
+    MESSAGE_TO_BACKGROUND_COLOR: "#ffe5e5",
+    MESSAGE_FROM_BACKGROUND_COLOR: "#ffffff",
 };

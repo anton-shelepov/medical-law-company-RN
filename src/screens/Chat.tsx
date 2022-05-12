@@ -1,5 +1,6 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect } from "react";
+import CreateNewMessageForm from "../components/_common/forms/CreateNewMessageForm";
 import ChatHeaderTitle from "../components/ChatHeaderTitle";
 import Messages from "../components/Messages";
 import { RootStackParamList } from "../navigators/RootStackNavigator";
@@ -22,6 +23,7 @@ const Chat: React.FC<ChatProps> = ({navigation, route: {params}}) => {
     return (
         <>
             <Messages />
+            <CreateNewMessageForm />
         </>
     )
 }

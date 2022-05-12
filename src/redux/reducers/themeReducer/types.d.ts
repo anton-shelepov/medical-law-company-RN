@@ -24,6 +24,8 @@ export type Theme = {
     CARD_BORDER_COLOR: string,
     IN_PROCESS_COLOR: string,
     DONE_COLOR: string,
+    MESSAGE_TO_BACKGROUND_COLOR: string,
+    MESSAGE_FROM_BACKGROUND_COLOR: string,
 }
 
 // Actions

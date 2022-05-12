@@ -4,17 +4,19 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import ValidatedTextInput from "../../inputs/ValidatedTextInput";
 import FilledButton from "../../buttons/FilledButton";
 import { yupResolver } from "@hookform/resolvers/yup";
-import AuthFormSchema from "./AuthForm.schema";
+import AuthFormSchema from "./schema";
 
+
+interface IFormData {
+    phone: string;
+    password: string;
+}
 
 const AuthForm: React.FC = () => {
     const {control, handleSubmit, reset ,formState: {errors}} = useForm({
         resolver: yupResolver(AuthFormSchema),
     });
-    const onHandleSubmit: SubmitHandler<{
-        phone: string;
-        password: string;
-    }> = (data) => {
+    const onHandleSubmit: SubmitHandler<IFormData> = (data) => {
         console.log(data)
         reset({
             phone: '',
