@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import {darkTheme} from "../../../../common/styles/themes";
+import {darkTheme} from "../../../../styles/themes";
 import Container from "../Container.styled";
 
 interface IDarkContainerProps {}

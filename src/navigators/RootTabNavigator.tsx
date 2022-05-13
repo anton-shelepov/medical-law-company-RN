@@ -2,12 +2,13 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { globalStyles } from "../common/styles/globalStyles";
-import ioniconsTabSelector from "../common/utils/IoniconsTabSelector";
 import { useTheme } from "../hooks/useTheme";
-import Chats from "../screens/Chats";
-import Home from "../screens/Home";
-import Recommendations from "../screens/Recommendations";
+import ChatsScreen from "../screens/ChatsScreen";
+import HomeScreen from "../screens/HomeScreen";
+import ProfileScreen from "../screens/ProfileScreen";
+import RecommendationsScreen from "../screens/RecommendationsScreen";
+import globalStyles from "../styles/globalStyles";
+import ioniconsTabSelector from "../utils/IoniconsTabSelector";
 
 const Tab = createBottomTabNavigator();
 
@@ -41,20 +42,26 @@ const RootTabNavigator = ({navigation}) => {
 
             <Tab.Screen
                 name={"Home"}
-                component={Home}
+                component={HomeScreen}
                 options={{title: 'Главная'}}
             />
 
             <Tab.Screen
                 name={"Chats"}
-                component={Chats}
+                component={ChatsScreen}
                 options={{title: 'Чаты'}}
             />
 
             <Tab.Screen
                 name={"Recommendations"}
-                component={Recommendations}
+                component={RecommendationsScreen}
                 options={{title: 'Рекомендации'}}
+            />
+
+            <Tab.Screen
+                name={"Profile"}
+                component={ProfileScreen}
+                options={{title: 'Профиль'}}
             />
 
         </Tab.Navigator>

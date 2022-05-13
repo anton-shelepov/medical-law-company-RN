@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { fieldIsRequired, minMaxlength } from "../../../../common/scripts/validationMessages";
+import { fieldIsRequired, minMaxlength } from "../../../../scripts/validationMessages";
 
 const CreateNewMessageFormSchema = yup.object().shape({
 

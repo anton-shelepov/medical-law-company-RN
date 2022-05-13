@@ -32,5 +32,4 @@ export const StatusText = styled(Text)<IStatusTextProps>`
 `
 
 export const RecommendationText = styled(Text).attrs({
-    numberOfLines: 3,
 })``

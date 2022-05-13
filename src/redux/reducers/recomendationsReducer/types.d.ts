@@ -1,6 +1,6 @@
 import {Action} from "redux";
 import {ActionType} from "typesafe-actions";
-import { recommendationStatuses } from "../../../common/constants/enums";
+import { recommendationStatuses } from "../../../constants/enums";
 import * as actions from "./recommendationsActions";
 
 // Root reducer state

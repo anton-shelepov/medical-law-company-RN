@@ -5,11 +5,13 @@ import { Theme } from "../../../redux/reducers/themeReducer/types";
 interface IWrapperProps {
     theme: Theme,
     direction?: 'row' | "column"
+    touchable?: boolean
 }
 
-const ListItemWrapper = styled.TouchableOpacity.attrs({
-    activeOpacity: .7
-})<IWrapperProps>`
+const ListItemWrapper = styled.TouchableOpacity.attrs(({touchable = true}) => ({
+    activeOpacity: .7,
+    disabled: !touchable,
+}))<IWrapperProps>`
   width: 100%;
   padding: 15px;
   background-color: ${({theme}) => theme.CARD_BACKGROUND_COLOR};

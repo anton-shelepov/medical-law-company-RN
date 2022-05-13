@@ -1,12 +1,13 @@
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
-import { darkTheme, lightTheme } from "../common/styles/themes";
 import React from "react";
-import RootTabNavigator from "./RootTabNavigator";
 import { useTheme } from "../hooks/useTheme";
+
+import { darkTheme, lightTheme } from "../styles/themes";
+import RootTabNavigator from "./RootTabNavigator";
 
 
 type RootDrawerParamList = {
-    RootTabNavigator: undefined
+    RootTabNavigator
 }
 
 const Drawer = createDrawerNavigator<RootDrawerParamList>()
@@ -28,13 +29,15 @@ const RootDrawerNavigator = () => {
                         <DrawerItem
                             labelStyle={{color: theme.TEXT_COLOR}}
                             label={isLightMode ? "Темная тема" : "Светлая тема"}
-                            onPress={() => toggleTheme(isLightMode ? darkTheme.mode : lightTheme.mode)}
-                        />
+                            onPress={() => toggleTheme(isLightMode ? darkTheme.mode : lightTheme.mode)} />
                     </DrawerContentScrollView>
                 )
             }}>
 
-            <Drawer.Screen name={'RootTabNavigator'} component={RootTabNavigator} />
+            <Drawer.Screen
+                name={'RootTabNavigator'}
+                component={RootTabNavigator}
+            />
 
         </Drawer.Navigator>
     );

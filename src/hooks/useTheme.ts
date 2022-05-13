@@ -1,6 +1,6 @@
 import {useAppSelector} from "./useAppSelector";
 import {useAppDispatch} from "./useAppDispatch";
-import {darkTheme, lightTheme} from "../common/styles/themes";
+import {darkTheme, lightTheme} from "../styles/themes";
 import {switchTheme} from "../redux/reducers/themeReducer/themeActions";
 import {Theme} from "../redux/reducers/themeReducer/types";
 

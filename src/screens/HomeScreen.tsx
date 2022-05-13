@@ -2,7 +2,7 @@ import React from "react";
 import Container from "../components/_common/_styles/Container.styled";
 
 
-const Home: React.FC = () => {
+const HomeScreen: React.FC = () => {
     return (
         <Container>
 
@@ -10,4 +10,4 @@ const Home: React.FC = () => {
     )
 }
 
-export default Home;
+export default HomeScreen;

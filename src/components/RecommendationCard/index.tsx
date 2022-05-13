@@ -1,8 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
-import { recommendationStatuses } from "../../common/constants/enums";
-import IoniconsSelector from "../../common/utils/IoniconsSelector";
+import { recommendationStatuses } from "../../constants/enums";
+import IoniconsSelector from "../../utils/IoniconsSelector";
 import { useTheme } from "../../hooks/useTheme";
 import { RootStackParamList } from "../../navigators/RootStackNavigator";
 import { RecommendationsItem } from "../../redux/reducers/recomendationsReducer/types";
@@ -11,10 +11,13 @@ import { ExecutionTime, RecommendationText, Status, StatusText, Title, TitleText
 
 
 interface IProps {
-    recommendationData: RecommendationsItem
+    recommendationData: RecommendationsItem,
+    touchable?: boolean,
+    navigateOnClick?: boolean,
+    textLines?: number,
 }
 
-const RecommendationListCard: React.FC<IProps> =
+const RecommendationCard: React.FC<IProps> =
     ({
          recommendationData: {
              recommendationText,
@@ -22,7 +25,10 @@ const RecommendationListCard: React.FC<IProps> =
              status,
              title,
              executionTime
-         }
+         },
+        textLines = 3,
+        navigateOnClick = true,
+        touchable = true
      }) => {
 
         const [theme] = useTheme()
@@ -35,7 +41,7 @@ const RecommendationListCard: React.FC<IProps> =
         }
 
         return (
-            <ListItemWrapper onPress={onHandlePress}>
+            <ListItemWrapper touchable={touchable} onPress={navigateOnClick ? onHandlePress : undefined}>
                 <Title>
                     <TitleText>{title}</TitleText>
                     <Status>
@@ -49,9 +55,9 @@ const RecommendationListCard: React.FC<IProps> =
                     </Status>
                 </Title>
                 <ExecutionTime>{`Выполнить до ${executionTime}`}</ExecutionTime>
-                <RecommendationText>{recommendationText}</RecommendationText>
+                <RecommendationText numberOfLines={textLines} >{recommendationText}</RecommendationText>
             </ListItemWrapper>
         )
     }
 
-export default RecommendationListCard;
+export default RecommendationCard;

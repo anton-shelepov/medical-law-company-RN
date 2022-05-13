@@ -1,4 +1,4 @@
-import { recommendationStatuses } from "../../../common/constants/enums";
+import { recommendationStatuses } from "../../../constants/enums";
 import { IRecommendationsState } from "./types.d";
 
 const initialState: IRecommendationsState = {

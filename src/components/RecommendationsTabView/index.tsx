@@ -3,7 +3,7 @@ import { FlatList, useWindowDimensions } from "react-native";
 import { TabBar, TabView } from "react-native-tab-view";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { useTheme } from "../../hooks/useTheme";
-import RecommendationListCard from "../RecommendationListCard";
+import RecommendationCard from "../RecommendationCard";
 import TabText from "../_common/_styles/TabText.styled";
 
 const RecommendationsTabView: React.FC = () => {
@@ -27,7 +27,7 @@ const RecommendationsTabView: React.FC = () => {
                     <FlatList
                         data={recommendationsData}
                         renderItem={info => (info.item.employeePosition === "doctor") &&
-                            <RecommendationListCard recommendationData={info.item} />}
+                            <RecommendationCard recommendationData={info.item} />}
                     />
                 )
 
@@ -36,7 +36,7 @@ const RecommendationsTabView: React.FC = () => {
                     <FlatList
                         data={recommendationsData}
                         renderItem={info => (info.item.employeePosition === "lawyer") &&
-                            <RecommendationListCard recommendationData={info.item} />}
+                            <RecommendationCard recommendationData={info.item} />}
                     />
                 )
 

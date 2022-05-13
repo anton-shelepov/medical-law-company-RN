@@ -1,4 +1,4 @@
-import { messageTypes } from "../../../common/constants/enums";
+import { messageTypes } from "../../../constants/enums";
 import { IChatsState } from "./types.d";
 
 const initialState: IChatsState = {

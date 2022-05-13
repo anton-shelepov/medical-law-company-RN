@@ -1,16 +1,19 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { TextInput } from "react-native";
+import IoniconsSelector from "../../../../utils/IoniconsSelector";
 import AuthFormSchema from "./schema";
-import { Container, SendMessageBtn } from "./styles";
-
+import { Container, MessageTextInput, MessageButton } from "./styles";
 
 interface IFormData {
     messageText: string,
 }
 
-const CreateNewMessageForm: React.FC = () => {
+interface IProps {
+    textInputPlaceholder?: string
+}
+
+const CreateNewMessageForm: React.FC<IProps> = ({textInputPlaceholder = "Сообщение..."}) => {
     const {control, handleSubmit, reset, formState: {errors}} = useForm({
         resolver: yupResolver(AuthFormSchema),
     });
@@ -23,17 +26,24 @@ const CreateNewMessageForm: React.FC = () => {
 
     return (
         <Container>
+            <MessageButton onPress={handleSubmit(onHandleSubmit)}>
+                <IoniconsSelector iconName="attach" size={30} color="#838383" />
+            </MessageButton>
+
             <Controller
                 control={control}
                 render={({field}) => (
-                    <TextInput
-
+                    <MessageTextInput
+                        multiline={true}
+                        placeholder={textInputPlaceholder}
                     />
                 )}
                 name="messageText"
             />
 
-            <SendMessageBtn title="" onPress={handleSubmit(onHandleSubmit)} />
+            <MessageButton onPress={handleSubmit(onHandleSubmit)}>
+                <IoniconsSelector iconName="send" size={26} color="#838383" />
+            </MessageButton>
         </Container>
     );
 }

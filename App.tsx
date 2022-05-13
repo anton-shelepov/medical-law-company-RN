@@ -8,7 +8,7 @@ import { ThemeProvider } from "styled-components";
 import { useAppSelector } from "./src/hooks/useAppSelector";
 import useFonts from "./src/hooks/useFonts";
 import AppLoading from "expo-app-loading";
-import { globalStyles } from "./src/common/styles/globalStyles";
+import globalStyles from "./src/styles/globalStyles";
 import RootStackNavigator from "./src/navigators/RootStackNavigator";
 
 export default function AppProvider() {

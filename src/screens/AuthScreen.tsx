@@ -5,7 +5,7 @@ import { useTheme } from "../hooks/useTheme";
 import DarkContainer from "../components/_common/_styles/modificators/DarkContainer.styled";
 import Logo from "../components/_common/_styles/Logo.styled";
 
-const Auth: React.FC = () => {
+const AuthScreen: React.FC = () => {
 
     const [theme] = useTheme()
 
@@ -21,4 +21,4 @@ const Auth: React.FC = () => {
     )
 }
 
-export default Auth;
+export default AuthScreen;

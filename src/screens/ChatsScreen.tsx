@@ -4,7 +4,7 @@ import ChatListCard from "../components/ChatListCard";
 import { useAppSelector } from "../hooks/useAppSelector";
 import Container from "../components/_common/_styles/Container.styled";
 
-const Chats: React.FC = () => {
+const ChatsScreen: React.FC = () => {
 
     const chatsData = useAppSelector(state => state.chats.chats);
 
@@ -19,4 +19,4 @@ const Chats: React.FC = () => {
     )
 }
 
-export default Chats;
+export default ChatsScreen;

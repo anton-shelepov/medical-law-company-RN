@@ -1,6 +1,6 @@
 import { Action } from "redux";
 import { ActionType } from "typesafe-actions";
-import { messageTypes } from "../../../common/constants/enums";
+import { messageTypes } from "../../../constants/enums";
 import * as actions from "./recommendationsActions";
 
 // Chat reducer state

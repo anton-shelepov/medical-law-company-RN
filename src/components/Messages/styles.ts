@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { messageTypes } from "../../common/constants/enums";
+import { messageTypes } from "../../constants/enums";
 import { Theme } from "../../redux/reducers/themeReducer/types";
 import Text from "../_common/_styles/Text.styled";
 
@@ -9,8 +9,8 @@ interface IMessageContainerProps {
 }
 
 export const MessagesWrapper = styled.View`
-  margin: 0 0 50px 0;
   flex-direction: column-reverse;
+  flex: 1;
 `
 
 export const MessageContainer = styled.View<IMessageContainerProps>`

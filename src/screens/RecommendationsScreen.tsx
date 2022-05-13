@@ -2,10 +2,10 @@ import React from "react";
 import RecommendationsTabView from "../components/RecommendationsTabView";
 
 
-const Recommendations: React.FC = () => {
+const RecommendationsScreen: React.FC = () => {
     return (
         <RecommendationsTabView />
     )
 }
 
-export default Recommendations;
+export default RecommendationsScreen;

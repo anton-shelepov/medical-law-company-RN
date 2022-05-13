@@ -1,7 +1,7 @@
 import React from "react";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import { darkTheme } from "../common/styles/themes";
-import Auth from "../screens/Auth";
+import { darkTheme } from "../styles/themes";
+import AuthScreen from "../screens/AuthScreen";
 
 const AuthStackNavigator = () => {
 
@@ -16,7 +16,7 @@ const AuthStackNavigator = () => {
 
             <Stack.Screen
                 name={"Auth"}
-                component={Auth}/>
+                component={AuthScreen}/>
 
         </Stack.Navigator>
     )

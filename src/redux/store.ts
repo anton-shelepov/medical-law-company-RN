@@ -3,8 +3,11 @@ import chatReducer from "./reducers/chatReducer";
 import chatsReducer from "./reducers/chatsReducer";
 import homeReducer from "./reducers/homeReducer";
 import recommendationsReducer from "./reducers/recomendationsReducer";
+import recommendationDetailsReducer from "./reducers/recommendationDetailsReducer";
 import themeReducer from "./reducers/themeReducer";
 import authReducer from "./reducers/authReducer";
+import profileReducer from "./reducers/profileReducer";
+
 
 const store = configureStore({
     reducer: {
@@ -14,6 +17,8 @@ const store = configureStore({
         recommendations: recommendationsReducer,
         chats: chatsReducer,
         chat: chatReducer,
+        recommendationDetails: recommendationDetailsReducer,
+        profile: profileReducer,
     },
 })
 

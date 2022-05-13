@@ -1,13 +1,13 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Chat from "../screens/Chat";
+import ChatScreen from "../screens/ChatScreen";
 import RootDrawerNavigator from "./RootDrawerNavigator";
 import { useAppSelector } from "../hooks/useAppSelector";
 import AuthStackNavigator from "./AuthStackNavigator";
-import RecommendationDetails from "../screens/RecommendationDetails";
-import { globalStyles } from "../common/styles/globalStyles";
+import RecommendationDetailsScreen from "../screens/RecommendationDetailsScreen";
+import globalStyles from "../styles/globalStyles";
 import { useTheme } from "../hooks/useTheme";
-import IoniconsSelector from "../common/utils/IoniconsSelector";
+import IoniconsSelector from "../utils/IoniconsSelector";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 
@@ -51,12 +51,12 @@ const RootStackNavigator = () => {
                             />
                             <Stack.Screen
                                 name={"RecommendationDetails"}
-                                component={RecommendationDetails}
+                                component={RecommendationDetailsScreen}
                                 options={{title: "Рекомендация"}}
                             />
                             <Stack.Screen
                                 name={"Chat"}
-                                component={Chat}
+                                component={ChatScreen}
                             />
                         </>
                     )

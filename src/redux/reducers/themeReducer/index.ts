@@ -1,6 +1,6 @@
-import { darkTheme, lightTheme } from "../../../common/styles/themes";
+import { darkTheme, lightTheme } from "../../../styles/themes";
 import {IThemeState, ThemeActions} from "./types";
-import {SWITCH_THEME} from "../../../common/constants/actionTypes";
+import {SWITCH_THEME} from "../../../constants/actionTypes";
 
 const initialState: IThemeState = {
     currentTheme: darkTheme
