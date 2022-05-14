@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { View } from "react-native";
 import TextInput from "../_styles/TextInput.styled";
 import { ControllerRenderProps, FieldValues } from "react-hook-form";
 import ErrorText from "../_styles/ErrorText.styled";
@@ -7,7 +8,8 @@ interface IProps {
     placeholder: string;
     field: ControllerRenderProps<FieldValues, string>;
     errors: {[x: string]: any;}
-    secureTextEntry?: boolean
+    secureTextEntry?: boolean;
+    colors?: "light" | "dark" | "theme"
 }
 
 const ValidatedTextInput: React.FC<IProps> =
@@ -16,6 +18,7 @@ const ValidatedTextInput: React.FC<IProps> =
          errors,
          placeholder,
          secureTextEntry,
+         colors,
      }) => {
 
         const [isFocused, setIsFocused] = useState(false)
@@ -30,8 +33,9 @@ const ValidatedTextInput: React.FC<IProps> =
         }
 
         return (
-            <>
+            <View style={{marginBottom: 15}}>
                 <TextInput
+                    colors={colors}
                     onFocus={onInputFocus}
                     onBlur={onInputBlur}
                     hasError={errors?.[name]}
@@ -43,8 +47,7 @@ const ValidatedTextInput: React.FC<IProps> =
                     secureTextEntry={secureTextEntry}
                 />
                 {errors?.[name] && <ErrorText>{errors?.[name]?.message || "Неизвестная ошибка"}</ErrorText>}
-            </>
-
+            </View>
         )
     }
 

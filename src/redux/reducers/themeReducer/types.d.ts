@@ -16,6 +16,8 @@ export type Theme = {
     BACKGROUND_COLOR: string,
     TEXT_COLOR: string,
     PLACEHOLDER_COLOR: string,
+    TEXT_INPUT_COLOR: string,
+    TEXT_INPUT_BORDER_COLOR: string,
     BUTTON_COLOR: string,
     BUTTON_TEXT_COLOR: string,
     TAB_BAR_BACKGROUND_COLOR: string,

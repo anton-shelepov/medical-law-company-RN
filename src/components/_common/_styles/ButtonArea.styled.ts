@@ -9,6 +9,7 @@ const ButtonArea = styled.TouchableOpacity.attrs({
   padding: 15px;
   align-items: center;
   margin-top: 25px;
+  width: 100%;
 `
 
 export default ButtonArea;

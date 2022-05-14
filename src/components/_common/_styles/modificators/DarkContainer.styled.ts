@@ -6,6 +6,7 @@ interface IDarkContainerProps {}
 
 const DarkContainer = styled(Container)<IDarkContainerProps>`
   background-color: ${darkTheme.BACKGROUND_COLOR};
+  padding: 15px;
 `
 
 export default DarkContainer

@@ -25,11 +25,12 @@ const AuthForm: React.FC = () => {
     }
 
     return (
-        <View>
+        <View style={{width: '100%'}}>
             <Controller
                 control={control}
                 render={({field}) => (
                     <ValidatedTextInput
+                        style="light"
                         field={field}
                         errors={errors}
                         placeholder={"Номер телефона"}
@@ -42,6 +43,7 @@ const AuthForm: React.FC = () => {
                 control={control}
                 render={({field}) => (
                     <ValidatedTextInput
+                        style="light"
                         field={field}
                         errors={errors}
                         placeholder={"Пароль"}

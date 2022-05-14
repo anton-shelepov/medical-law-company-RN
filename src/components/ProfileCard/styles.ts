@@ -4,11 +4,13 @@ import UserImage from "../_common/_styles/UserImage.styled";
 
 
 export const ProfileImage = styled(UserImage)`
-  width: 100px;
-  height: 100px;
+  margin-top: 10px;
+  width: 120px;
+  height: 120px;
   margin-bottom: 15px;
 `
 
 export const UserName = styled(Text)`
-  
+  font-size: 15px;
+  margin-bottom: 10px;
 `

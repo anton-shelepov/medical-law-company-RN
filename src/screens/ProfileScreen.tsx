@@ -1,14 +1,14 @@
 import React from "react";
-import { View } from "react-native";
-import Container from "../components/_common/_styles/Container.styled";
+import ScrollableContainer from "../components/_common/_styles/ScrollableContainer.styled";
+import ProfileEditForm from "../components/_common/forms/ProfileEditForm";
 import ProfileCard from "../components/ProfileCard";
 
 const ProfileScreen: React.FC = () => {
     return (
-        <Container>
+        <ScrollableContainer>
             <ProfileCard />
-            <View style={{flex: 1}}></View>
-        </Container>
+            <ProfileEditForm />
+        </ScrollableContainer>
     )
 }
 
