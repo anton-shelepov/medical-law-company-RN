@@ -12,6 +12,14 @@ import ioniconsTabSelector from "../utils/IoniconsTabSelector";
 
 const Tab = createBottomTabNavigator();
 
+export type RootTabParamList = {
+    Recommendations,
+    Chats,
+    Home,
+    Profile,
+}
+
+
 const RootTabNavigator = ({navigation}) => {
 
     const [theme] = useTheme()
