@@ -3,7 +3,7 @@ import { fieldIsRequired, minMaxlength } from "../../../../scripts/validationMes
 
 const AuthFormSchema = yup.object().shape({
 
-    phone: yup.string()
+    phoneNumber: yup.string()
         .required(fieldIsRequired("Номер телефона")),
 
     password: yup.string()

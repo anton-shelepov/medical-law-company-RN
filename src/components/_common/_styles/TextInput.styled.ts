@@ -9,7 +9,7 @@ interface ITextInputProps {
 }
 
 const TextInput = styled.TextInput.attrs(({theme}) => ({
-    placeholderTextColor: theme.PLACEHOLDER_COLOR
+    placeholderTextColor: theme.PLACEHOLDER_COLOR,
 }))<ITextInputProps>`
   opacity: ${({isFocused}) => isFocused ? 1 : .8};
   min-width: 100%;

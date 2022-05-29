@@ -1,10 +1,11 @@
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
-import React from "react";
+import * as WebBrowser from 'expo-web-browser';
+import React, { useEffect } from "react";
 import DrawerProfileInfo from "../components/DrawerProfileInfo";
 import links from "../constants/links";
+import { useAppDispatch } from "../hooks/useAppDispatch";
 import { useTheme } from "../hooks/useTheme";
-import * as WebBrowser from 'expo-web-browser';
-
+import { logoutRequest } from "../redux/reducers/userReducer/userActions";
 import { darkTheme, lightTheme } from "../styles/themes";
 import RootTabNavigator from "./RootTabNavigator";
 
@@ -19,6 +20,8 @@ const RootDrawerNavigator = () => {
 
     const [theme, toggleTheme] = useTheme()
     const isLightMode = theme.mode === lightTheme.mode
+
+    const dispatch = useAppDispatch();
 
     return (
         <Drawer.Navigator
@@ -39,6 +42,11 @@ const RootDrawerNavigator = () => {
                             labelStyle={{color: theme.TEXT_COLOR}}
                             label="Наша группа VK"
                             onPress={() => WebBrowser.openBrowserAsync(links.VK_GROUP)}
+                        />
+                        <DrawerItem
+                            labelStyle={{color: theme.TEXT_COLOR}}
+                            label="Выйти"
+                            onPress={() => dispatch(logoutRequest())}
                         />
                     </DrawerContentScrollView>
                 )

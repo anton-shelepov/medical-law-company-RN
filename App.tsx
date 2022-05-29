@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import 'react-native-gesture-handler';
 import { Provider } from "react-redux";
 import { StatusBar } from "expo-status-bar";
@@ -10,6 +10,9 @@ import useFonts from "./src/hooks/useFonts";
 import AppLoading from "expo-app-loading";
 import globalStyles from "./src/styles/globalStyles";
 import RootStackNavigator from "./src/navigators/RootStackNavigator";
+import { getFromSecureStore } from "./src/scripts/secureStore";
+import { useAppDispatch } from "./src/hooks/useAppDispatch";
+import { signinSuccess } from "./src/redux/reducers/userReducer/userActions";
 
 export default function AppProvider() {
     return (
@@ -20,10 +23,19 @@ export default function AppProvider() {
 }
 
 function App() {
+    
+    const dispatch = useAppDispatch()
 
-    const theme = useAppSelector(state => state.theme.currentTheme)
+    useEffect(() => {
+        getFromSecureStore('access_token').then(accessToken => {
+            dispatch(signinSuccess())
+            console.log(accessToken)
+        }).catch(error => { throw error })
+    }, [])
 
-    const isFontsLoaded = useFonts()
+    const theme = useAppSelector(state => state.theme.currentTheme);
+
+    const isFontsLoaded = useFonts();
 
     if (!isFontsLoaded) {
         return (

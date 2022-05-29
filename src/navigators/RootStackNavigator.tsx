@@ -15,7 +15,7 @@ import { TouchableOpacity } from "react-native";
 export type RootStackParamList = {
     RootDrawNavigator,
     RecommendationDetails,
-    Auth,
+    AuthStack,
     Chat: {id: number},
 }
 
@@ -24,7 +24,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const RootStackNavigator = () => {
 
     const navigation = useNavigation()
-    const isUserAuth = useAppSelector(state => state.auth.isUserAuth)
+    const isUserAuth = useAppSelector(state => state.user.isAuth)
     const [theme] = useTheme()
 
     return (
@@ -60,7 +60,11 @@ const RootStackNavigator = () => {
                             />
                         </>
                     )
-                    : <Stack.Screen name={"Auth"} component={AuthStackNavigator} />
+                    : <Stack.Screen
+                        options={{headerShown: false}}
+                        name={"AuthStack"}
+                        component={AuthStackNavigator}
+                    />
             }
         </Stack.Navigator>
     )

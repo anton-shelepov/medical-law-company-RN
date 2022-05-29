@@ -15,7 +15,7 @@ const AuthScreen: React.FC = () => {
 
     return (
         <DarkContainer>
-            <Logo />
+            <Logo marginTop={170} />
             <AuthForm />
         </DarkContainer>
     )

@@ -19,3 +19,4 @@ const IoniconsSelector = ({iconName, size = 23, useThemeColor = false, color = "
 }
 
 export default IoniconsSelector;
+

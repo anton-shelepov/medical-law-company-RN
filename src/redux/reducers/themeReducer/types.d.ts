@@ -36,7 +36,7 @@ export type Theme = {
 
 interface ISwitchTheme extends Action {
     type: typeof SWITCH_THEME
-    theme: Theme
+    payload: Theme
 }
 
 // Combine actions type

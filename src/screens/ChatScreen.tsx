@@ -11,10 +11,7 @@ const ChatScreen: React.FC<ChatProps> = ({navigation, route: {params}}) => {
 
     useEffect(() => {
         navigation.setOptions({
-            headerTitle:
-                () => <ChatHeaderTitle
-                    id={params.id}
-                />,
+            headerTitle: () => <ChatHeaderTitle id={params.id} />,
             headerBackVisible: false,
             headerTitleAlign: "left",
         })

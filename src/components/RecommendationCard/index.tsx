@@ -5,7 +5,7 @@ import { recommendationStatuses } from "../../constants/enums";
 import IoniconsSelector from "../../utils/IoniconsSelector";
 import { useTheme } from "../../hooks/useTheme";
 import { RootStackParamList } from "../../navigators/RootStackNavigator";
-import { RecommendationsItem } from "../../redux/reducers/recomendationsReducer/types";
+import { RecommendationsItem } from "../../redux/reducers/recommendationsReducer/types";
 import ListItemWrapper from "../_common/_styles/ListItemWrapper.styled";
 import { ExecutionTime, RecommendationText, Status, StatusText, Title, TitleText, } from "./styles";
 

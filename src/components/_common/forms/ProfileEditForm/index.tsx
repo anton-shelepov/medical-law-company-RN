@@ -1,6 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { getFromSecureStore } from "../../../../scripts/secureStore";
 import ValidatedTextInput from "../../inputs/ValidatedTextInput";
 import AuthFormSchema from "./schema";
 import { SectionName, ProfileEditContainer, InputsContainer, SubmitButton } from "./styles";
@@ -18,7 +19,7 @@ interface IProps {
 
 const ProfileEditForm: React.FC<IProps> = () => {
 
-    const {control, handleSubmit, reset, formState: {errors}} = useForm({
+    const { control, handleSubmit, reset, formState: { errors } } = useForm({
         resolver: yupResolver(AuthFormSchema),
     });
 
@@ -34,7 +35,7 @@ const ProfileEditForm: React.FC<IProps> = () => {
 
                 <Controller
                     control={control}
-                    render={({field}) => (
+                    render={({ field }) => (
                         <ValidatedTextInput
                             field={field}
                             errors={errors}
@@ -48,7 +49,7 @@ const ProfileEditForm: React.FC<IProps> = () => {
 
                 <Controller
                     control={control}
-                    render={({field}) => (
+                    render={({ field }) => (
                         <ValidatedTextInput
                             field={field}
                             errors={errors}
@@ -62,7 +63,7 @@ const ProfileEditForm: React.FC<IProps> = () => {
 
                 <Controller
                     control={control}
-                    render={({field}) => (
+                    render={({ field }) => (
                         <ValidatedTextInput
                             field={field}
                             errors={errors}
@@ -75,7 +76,7 @@ const ProfileEditForm: React.FC<IProps> = () => {
 
                 <Controller
                     control={control}
-                    render={({field}) => (
+                    render={({ field }) => (
                         <ValidatedTextInput
                             field={field}
                             errors={errors}

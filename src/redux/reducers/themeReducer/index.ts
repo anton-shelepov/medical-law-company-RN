@@ -6,13 +6,13 @@ const initialState: IThemeState = {
     currentTheme: darkTheme
 }
 
-const themeReducer = (state: IThemeState = initialState, action: ThemeActions): IThemeState => {
+const themeReducer = (state = initialState, action: ThemeActions): IThemeState => {
     switch (action.type) {
 
         case SWITCH_THEME:
             return {
                 ...state,
-                currentTheme: action.theme
+                currentTheme: action.payload
             }
 
         default:

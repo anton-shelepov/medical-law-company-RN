@@ -10,7 +10,7 @@ import UserImage from "../_common/_styles/UserImage.styled";
 
 const DrawerProfileInfo: React.FC = () => {
 
-    const {userImageSrc, userName} = useAppSelector(state => state.profile.profileData)
+    const { userImageSrc, userName } = useAppSelector(state => state.profile.profileData)
     const navigation = useNavigation<NativeStackNavigationProp<RootTabParamList>>()
 
     return (
@@ -19,7 +19,7 @@ const DrawerProfileInfo: React.FC = () => {
                 <UserImage
                     width="80px"
                     height="80px"
-                    source={{uri: userImageSrc}}
+                    source={{ uri: userImageSrc }}
                 />
                 <UserName>{userName}</UserName>
             </DrawerContainer>

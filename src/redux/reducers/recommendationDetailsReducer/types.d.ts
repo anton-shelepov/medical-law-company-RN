@@ -1,6 +1,6 @@
 import {Action} from "redux";
 import {ActionType} from "typesafe-actions";
-import { RecommendationsItem } from "../recomendationsReducer/types";
+import { RecommendationsItem } from "../recommendationsReducer/types";
 import * as actions from "./recommendationsActions";
 
 // Root reducer state
