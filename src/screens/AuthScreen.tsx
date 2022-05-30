@@ -4,13 +4,14 @@ import AuthForm from "../components/_common/forms/AuthForm";
 import { useTheme } from "../hooks/useTheme";
 import DarkContainer from "../components/_common/_styles/modificators/DarkContainer.styled";
 import Logo from "../components/_common/_styles/Logo.styled";
+import { darkTheme } from "../styles/themes";
 
 const AuthScreen: React.FC = () => {
 
     const [theme] = useTheme()
 
     useEffect(() => {
-        setStatusBarBackgroundColor(theme.BACKGROUND_COLOR, false)
+        setStatusBarBackgroundColor(darkTheme.BACKGROUND_COLOR, false)
     }, [])
 
     return (

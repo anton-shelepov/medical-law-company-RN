@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { getFromSecureStore } from "../../../../scripts/secureStore";
+import { getFromSecureStore } from "../../../../utils/secureStore/secureStore";
 import ValidatedTextInput from "../../inputs/ValidatedTextInput";
 import AuthFormSchema from "./schema";
 import { SectionName, ProfileEditContainer, InputsContainer, SubmitButton } from "./styles";

@@ -10,9 +10,9 @@ import useFonts from "./src/hooks/useFonts";
 import AppLoading from "expo-app-loading";
 import globalStyles from "./src/styles/globalStyles";
 import RootStackNavigator from "./src/navigators/RootStackNavigator";
-import { getFromSecureStore } from "./src/scripts/secureStore";
 import { useAppDispatch } from "./src/hooks/useAppDispatch";
 import { signinSuccess } from "./src/redux/reducers/userReducer/userActions";
+import getTokensFromSecureStore from "./src/utils/secureStore/getTokensFromSecureStore";
 
 export default function AppProvider() {
     return (
@@ -23,14 +23,16 @@ export default function AppProvider() {
 }
 
 function App() {
-    
+
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        getFromSecureStore('access_token').then(accessToken => {
-            dispatch(signinSuccess())
-            console.log(accessToken)
-        }).catch(error => { throw error })
+        getTokensFromSecureStore().then(tokens => {
+            dispatch(signinSuccess(tokens))
+
+        }).catch((error: Error) => {
+            console.log(error.message)
+        })
     }, [])
 
     const theme = useAppSelector(state => state.theme.currentTheme);

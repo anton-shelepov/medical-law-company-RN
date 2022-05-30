@@ -16,7 +16,7 @@ export type RootStackParamList = {
     RootDrawNavigator,
     RecommendationDetails,
     AuthStack,
-    Chat: {id: number},
+    Chat: { id: number },
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -29,11 +29,11 @@ const RootStackNavigator = () => {
 
     return (
         <Stack.Navigator screenOptions={{
-            headerStyle: {backgroundColor: globalStyles.RED_COLOR_TONE},
+            headerStyle: { backgroundColor: globalStyles.RED_COLOR_TONE },
             headerTitleAlign: "center",
-            headerTitleStyle: {color: "#ffffff"},
+            headerTitleStyle: { color: "#ffffff" },
             animation: "slide_from_right",
-            contentStyle: {backgroundColor: theme.BACKGROUND_COLOR},
+            contentStyle: { backgroundColor: theme.BACKGROUND_COLOR },
             headerLeft: () => (
                 <TouchableOpacity activeOpacity={.8} onPress={() => navigation.goBack()}>
                     <IoniconsSelector iconName="arrow-back-outline" size={26} />
@@ -41,30 +41,30 @@ const RootStackNavigator = () => {
             )
         }}>
             {
-                isUserAuth
-                    ? (
-                        <>
-                            <Stack.Screen
-                                options={{headerShown: false}}
-                                name={"RootDrawNavigator"}
-                                component={RootDrawerNavigator}
-                            />
-                            <Stack.Screen
-                                name={"RecommendationDetails"}
-                                component={RecommendationDetailsScreen}
-                                options={{title: "Рекомендация"}}
-                            />
-                            <Stack.Screen
-                                name={"Chat"}
-                                component={ChatScreen}
-                            />
-                        </>
-                    )
-                    : <Stack.Screen
-                        options={{headerShown: false}}
+                isUserAuth ? (
+                    <>
+                        <Stack.Screen
+                            options={{ headerShown: false }}
+                            name={"RootDrawNavigator"}
+                            component={RootDrawerNavigator}
+                        />
+                        <Stack.Screen
+                            name={"RecommendationDetails"}
+                            component={RecommendationDetailsScreen}
+                            options={{ title: "Рекомендация" }}
+                        />
+                        <Stack.Screen
+                            name={"Chat"}
+                            component={ChatScreen}
+                        />
+                    </>
+                ) : (
+                    <Stack.Screen
+                        options={{ headerShown: false }}
                         name={"AuthStack"}
                         component={AuthStackNavigator}
                     />
+                )
             }
         </Stack.Navigator>
     )

@@ -8,7 +8,7 @@ export async function getFromSecureStore(key: string) {
     let result = await SecureStore.getItemAsync(key);
 
     if (!result) {
-        return `Not found any data by key: ${key} in secure store`
+        throw new Error(`Not found any data by key: ${key} in secure store`)
     }
 
     return result

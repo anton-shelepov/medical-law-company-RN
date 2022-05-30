@@ -7,6 +7,8 @@ import * as actions from "./userActions";
 // Root user state
 
 export interface IUserState {
+    accessToken: string,
+    refreshToken: string,
     isAuth: boolean,
     error: null | string,
     isLoading: boolean,
@@ -21,6 +23,7 @@ export interface ISigninRequest extends Action {
 
 export interface ISigninSuccess extends Action {
     type: typeof SIGNIN_SUCCESS
+    payload: Tokens
 }
 
 export interface ISigninFailure extends Action {
@@ -40,6 +43,14 @@ export interface ILogoutFailure extends Action {
     type: typeof LOGOUT_FAILURE
     payload: string | unknown,
 }
+
+// Common reducer types
+
+export type Tokens = {
+    accessToken: string,
+    refreshToken: string,
+}
+
 
 // Combine actions type
 
