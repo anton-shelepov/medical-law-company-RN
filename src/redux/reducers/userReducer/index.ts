@@ -26,7 +26,8 @@ const userReducer = (state = initialState, action: UserActions): IUserState => {
                 isAuth: true,
                 accessToken: action.payload.accessToken,
                 refreshToken: action.payload.refreshToken,
-                isLoading: state.isLoading && false
+                isLoading: false,
+                error: null,
             }
 
         case SIGNIN_FAILURE:
@@ -36,6 +37,7 @@ const userReducer = (state = initialState, action: UserActions): IUserState => {
                 isAuth: false,
                 accessToken: null,
                 refreshToken: null,
+                isLoading: state.isLoading && false
             }
 
         // ------ LOGOUT ------

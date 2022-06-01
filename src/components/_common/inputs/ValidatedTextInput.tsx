@@ -6,24 +6,29 @@ import ErrorText from "../_styles/ErrorText.styled";
 
 interface IProps {
     placeholder: string;
-    field: ControllerRenderProps<FieldValues, string>;
-    errors: {[x: string]: any;}
+    field: ControllerRenderProps<FieldValues, any>;
+    errors: { [x: string]: any; }
     secureTextEntry?: boolean;
-    colors?: "light" | "dark" | "theme"
+    maxLength?: number;
+    onFocusInitialValue?: string;
 }
 
 const ValidatedTextInput: React.FC<IProps> =
     ({
-         field: {name, onChange, onBlur, ref, value},
-         errors,
-         placeholder,
-         secureTextEntry,
-         colors,
-     }) => {
+        field: { name, onChange, onBlur, ref, value },
+        errors,
+        placeholder,
+        secureTextEntry,
+        maxLength = 150,
+        onFocusInitialValue,
+    }) => {
 
         const [isFocused, setIsFocused] = useState(false)
 
         const onInputFocus = () => {
+            if (onFocusInitialValue && value === undefined || value === '') {
+                onChange(onFocusInitialValue)
+            }
             setIsFocused(true)
         }
 
@@ -33,9 +38,9 @@ const ValidatedTextInput: React.FC<IProps> =
         }
 
         return (
-            <View style={{marginBottom: 15}}>
+            <View style={{ marginBottom: 15 }}>
                 <TextInput
-                    colors={colors}
+                    maxLength={maxLength}
                     onFocus={onInputFocus}
                     onBlur={onInputBlur}
                     hasError={errors?.[name]}

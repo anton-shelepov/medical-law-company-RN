@@ -23,13 +23,13 @@ function* userSigninRequestSaga({ payload }: ISigninRequest) {
 
 function* userLogoutRequestSaga() {
     try {
-        // yield call(authAPI.logout);
+        yield call(authAPI.logout);
         yield call(removeFromSecureStore, 'access_token');
         yield call(removeFromSecureStore, 'refresh_token');
         yield put(logoutSuccess());
 
     } catch (error) {
-        yield put(logoutFailure(error));
+        yield put(logoutFailure(error.message));
     }
 }
 

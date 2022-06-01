@@ -1,35 +1,16 @@
-import client from "./axios.config";
+import store from "../redux/store";
+import privateClient from "./axios.config";
 
 
 const authAPI = {
 
-    defaultPath: 'auth',
+    path: 'auth',
 
-    signup(data) {
-        return client.post(`${authAPI.defaultPath}/signup`, data)
-            .then((response) => {
-                return response.data
-            })
-            .catch((error) => {
-                return error
-            })
-    },
+    signin: async (data) => await privateClient.post(`${authAPI.path}/signin`, data),
 
-    signin(data) {
-        return client.post(`${authAPI.defaultPath}/signin`, data)
-            .then(response => response)
-            .catch((error) => { throw error })
-    },
+    logout: async () => await privateClient.post(`${authAPI.path}/logout`),
 
-    async logout() {
-        return client.post(`${authAPI.defaultPath}/logout`)
-            .then(response => response)
-            .catch((error) => { throw error })
-    },
-
-    async refresh() {
-
-    }
+    refresh: async () => await privateClient.post(`${authAPI.path}/refresh`)
 
 }
 

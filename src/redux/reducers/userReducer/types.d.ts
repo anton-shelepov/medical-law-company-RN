@@ -3,6 +3,8 @@ import { IAuthFormData } from "../../../components/_common/forms/AuthForm";
 import { LOGOUT_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS, SIGNIN_FAILURE, SIGNIN_REQUEST, SIGNIN_SUCCESS } from "../../../constants/actionTypes";
 import { ActionType } from "typesafe-actions";
 import * as actions from "./userActions";
+import { errorTypes } from "../../../constants/enums";
+import { StateError } from "../../../types/errors";
 
 // Root user state
 
@@ -10,7 +12,10 @@ export interface IUserState {
     accessToken: string,
     refreshToken: string,
     isAuth: boolean,
-    error: null | string,
+    error: {
+        type: errorTypes,
+        message: string,
+    },
     isLoading: boolean,
 }
 
@@ -28,7 +33,7 @@ export interface ISigninSuccess extends Action {
 
 export interface ISigninFailure extends Action {
     type: typeof SIGNIN_FAILURE
-    payload: string | unknown,
+    payload: StateError,
 }
 
 export interface ILogoutRequest extends Action {

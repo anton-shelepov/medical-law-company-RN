@@ -8,7 +8,6 @@ const ButtonArea = styled.TouchableOpacity.attrs({
   border-radius: 25px;
   padding: 15px;
   align-items: center;
-  margin-top: 25px;
   width: 100%;
 `
 

@@ -28,23 +28,6 @@ const store = configureStore({
     },
 })
 
-// FIXME: Remove axios common headers logic initialization from here
-
-// Listening for updating authorization token
-store.subscribe(onStoreChangeUpdateToken);
-
-// Choosing access token from storage
-function selectToken(state: RootState) {
-    return state.user.accessToken
-}
-
-// Listener for store change (src/redux/store.ts)
-export function onStoreChangeUpdateToken() {
-    let accessToken = selectToken(store.getState())
-    axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-}
-
-
 sagaMiddleware.run(rootSaga);
 
 export type RootState = ReturnType<typeof store.getState>

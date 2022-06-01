@@ -7,6 +7,9 @@ import FilledButton from "../../buttons/FilledButton";
 import { yupResolver } from "@hookform/resolvers/yup";
 import AuthFormSchema from "./schema";
 import { signinRequest } from "../../../../redux/reducers/userReducer/userActions";
+import ErrorText from "../../_styles/ErrorText.styled";
+import { useAppSelector } from "../../../../hooks/useAppSelector";
+import { errorTypes } from "../../../../constants/enums";
 
 export interface IAuthFormData {
     phoneNumber: string;
@@ -14,10 +17,13 @@ export interface IAuthFormData {
 }
 
 const AuthForm: React.FC = () => {
-    const {control, handleSubmit, reset ,formState: {errors}} = useForm({
+
+    const { control, handleSubmit, reset, formState: { errors } } = useForm({
         resolver: yupResolver(AuthFormSchema),
     });
+
     const dispatch = useAppDispatch()
+
     const onHandleSubmit: SubmitHandler<IAuthFormData> = (data) => {
         dispatch(signinRequest(data))
         reset({
@@ -25,34 +31,46 @@ const AuthForm: React.FC = () => {
             password: '',
         })
     }
-    return (
-        <View style={{width: '100%', flex: 1, marginTop: 60}}>
-            <Controller
-                control={control}
-                render={({field}) => (
-                    <ValidatedTextInput
-                        colors="light"
-                        field={field}
-                        errors={errors}
-                        placeholder={"Номер телефона"}
-                    />
-                )}
-                name="phoneNumber"
-            />
+    const error = useAppSelector(state => state.user.error)
 
-            <Controller
-                control={control}
-                render={({field}) => (
-                    <ValidatedTextInput
-                        colors="light"
-                        field={field}
-                        errors={errors}
-                        placeholder={"Пароль"}
-                        secureTextEntry={true}
-                    />
-                )}
-                name="password"
-            />
+    return (
+        <View style={{ width: '100%', flex: 1, marginTop: 60 }}>
+            <View style={{ marginBottom: 15 }}>
+                <Controller
+                    control={control}
+                    render={({ field }) => (
+                        <ValidatedTextInput
+                            field={field}
+                            errors={errors}
+                            maxLength={12}
+                            onFocusInitialValue="+7"
+                            placeholder={"Номер телефона"}
+                        />
+                    )}
+                    name="phoneNumber"
+                />
+
+                <Controller
+                    control={control}
+                    render={({ field }) => (
+                        <ValidatedTextInput
+                            field={field}
+                            errors={errors}
+                            placeholder={"Пароль"}
+                            secureTextEntry={true}
+                        />
+                    )}
+                    name="password"
+                />
+            </View>
+
+            {
+                error?.type === errorTypes.AUTH &&
+                <ErrorText style={{ marginBottom: 15, alignSelf: "center" }}>
+                    {error.message}
+                </ErrorText>
+            }
+
             <FilledButton title="Авторизоваться" onPress={handleSubmit(onHandleSubmit)} />
         </View>
     );
