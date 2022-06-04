@@ -34,7 +34,7 @@ export interface IRecommendationsFetchRequest extends Action {
 
 export interface IRecommendationsFetchSuccess extends Action {
     type: typeof RECOMMENDATIONS_FETCH_SUCCESS
-    payload: RecommendationsItems
+    payload: RecommendationItem[] | []
 }
 
 export interface IRecommendationsFetchFailure extends Action {

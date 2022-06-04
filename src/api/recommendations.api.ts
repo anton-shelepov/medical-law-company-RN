@@ -6,9 +6,10 @@ const recommendationsAPI = {
     path: 'users/',
 
     async fetchAllUserRecommendations(userId: number) {
-        await privateClient.get(this.path + userId + '/recommendations')
+        return await privateClient.get(
+            recommendationsAPI.path + userId + '/recommendations'
+        )
     }
-
 }
 
 export default recommendationsAPI;

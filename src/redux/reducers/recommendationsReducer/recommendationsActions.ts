@@ -11,7 +11,7 @@ export const recommendationsFetchRequest =
     })
 
 export const recommendationsFetchSuccess =
-    (recommendations: RecommendationItem[]): IRecommendationsFetchSuccess => ({
+    (recommendations: RecommendationItem[] | []): IRecommendationsFetchSuccess => ({
         type: RECOMMENDATIONS_FETCH_SUCCESS,
         payload: recommendations
     })

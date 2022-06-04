@@ -1,13 +1,13 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { errorTypes } from "../constants/enums";
-import { getFromSecureStore, removeFromSecureStore, setInSecureStore } from "../utils/secureStore/secureStore";
+import { TokenTypes } from "../constants/enums";
+import { getFromSecureStore, removeFromSecureStore } from "../utils/secureStore/secureStore";
 
 
 const privateClient = axios.create()
 
 privateClient.interceptors.request.use(
     async config => {
-        const accessToken = await getFromSecureStore("access_token")
+        const accessToken = await getFromSecureStore(TokenTypes.accessToken)
         config.headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ privateClient.interceptors.request.use(
 privateClient.interceptors.response.use(
 
     // Return response if there not any error
-    (response: AxiosResponse) => { return response },
+    (response: AxiosResponse) => { console.log(response); return response },
 
     // If response have a error
     async function (error: AxiosError) { // TODO: Сделать обновление недействительного токена доступа
@@ -36,7 +36,7 @@ privateClient.interceptors.response.use(
 
         // If not authorized (invalid access token)
         if (!isRefreshRequestFailed) {
-            const refreshToken = await getFromSecureStore('refresh_token')
+            const refreshToken = await getFromSecureStore(TokenTypes.refreshToken)
             const tokens = await privateClient.post('auth/refresh', undefined, {
                 headers: {
                     'Authorization': `Bearer ${refreshToken}`,
@@ -51,8 +51,8 @@ privateClient.interceptors.response.use(
         // If refresh request was failed (invalid refresh token)
         if (isRefreshRequestFailed) {
             await Promise.all([
-                removeFromSecureStore('access_token'),
-                removeFromSecureStore('refresh_token')
+                removeFromSecureStore(TokenTypes.accessToken),
+                removeFromSecureStore(TokenTypes.refreshToken)
             ])
         }
 
@@ -61,10 +61,3 @@ privateClient.interceptors.response.use(
 );
 
 export default privateClient;
-
-// if (error.response.status === 403 && originalRequest.url.includes('signin')) {
-        //     return Promise.reject({
-        //         type: errorTypes.AUTH,
-        //         message: "Неверный номер телефона или пароль"
-        //     });
-        // }

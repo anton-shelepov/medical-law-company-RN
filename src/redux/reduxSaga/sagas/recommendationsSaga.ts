@@ -1,7 +1,8 @@
 import { AxiosResponse } from 'axios';
-import { call, StrictEffect, takeLatest } from "redux-saga/effects";
+import { call, put, StrictEffect, takeLatest } from "redux-saga/effects";
 import recommendationsAPI from '../../../api/recommendations.api';
 import { RECOMMENDATIONS_FETCH_REQUEST } from '../../../constants/actionTypes';
+import { recommendationsFetchFailure, recommendationsFetchSuccess } from '../../reducers/recommendationsReducer/recommendationsActions';
 import { IRecommendationsFetchRequest } from '../../reducers/recommendationsReducer/types';
 
 function* recommendationsFetchSaga({ payload }: IRecommendationsFetchRequest) {
@@ -10,19 +11,13 @@ function* recommendationsFetchSaga({ payload }: IRecommendationsFetchRequest) {
             recommendationsAPI.fetchAllUserRecommendations,
             payload.userId
         );
-        console.log(response)
+        yield put(recommendationsFetchSuccess(response.data))
 
     } catch (error) {
-        // if (error.response.status === 204) {
-        //     yield put(signinFailure({
-        //         type: errorTypes.AUTH,
-        //         message: "Неверный номер телефона или пароль"
-        //     }));
-        // }
-        // return error
+        yield put(recommendationsFetchFailure({ type: '', message: error.message }))
+        return error
     }
 }
-
 
 function* recommendationsSaga(): Generator<StrictEffect> {
     yield takeLatest(RECOMMENDATIONS_FETCH_REQUEST, recommendationsFetchSaga);

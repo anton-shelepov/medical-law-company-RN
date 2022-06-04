@@ -2,6 +2,7 @@ import { LOGOUT_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS, SIGNIN_FAILURE, SIGNIN_
 import { IUserState, UserActions } from "./types";
 
 const initialState: IUserState = {
+    data: null,
     accessToken: null,
     refreshToken: null,
     error: null,

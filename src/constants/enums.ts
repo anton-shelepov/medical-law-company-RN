@@ -1,4 +1,4 @@
-export enum messageTypes  {
+export enum messageTypes {
     FROM = "FROM",
     TO = "TO",
 }
@@ -15,4 +15,15 @@ export enum RecommendationGroups {
 
 export enum errorTypes {
     AUTH = "AUTH",
+}
+
+export enum AppRoles {
+    USER = "USER",
+    EMPLOYEE = "EMPLOYEE",
+    ADMIN = "ADMIN",
+}
+
+export enum TokenTypes {
+    accessToken = "accessToken",
+    refreshToken = "refreshToken"
 }

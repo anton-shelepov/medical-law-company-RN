@@ -1,17 +1,17 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
-import { recommendationStatuses } from "../../constants/enums";
-import IoniconsSelector from "../../utils/IoniconsSelector";
+import { RecommendationStatuses } from "../../constants/enums";
 import { useTheme } from "../../hooks/useTheme";
 import { RootStackParamList } from "../../navigators/RootStackNavigator";
-import { RecommendationsItem } from "../../redux/reducers/recommendationsReducer/types";
+import { RecommendationItem } from "../../redux/reducers/recommendationsReducer/types";
+import IoniconsSelector from "../../utils/IoniconsSelector";
 import ListItemWrapper from "../_common/_styles/ListItemWrapper.styled";
-import { ExecutionTime, RecommendationText, Status, StatusText, Title, TitleText, } from "./styles";
+import { ExecutionTime, RecommendationText, Status, StatusText, Title, TitleText } from "./styles";
 
 
 interface IProps {
-    recommendationData: RecommendationsItem,
+    recommendationData: RecommendationItem,
     touchable?: boolean,
     navigateOnClick?: boolean,
     textLines?: number,
@@ -19,22 +19,21 @@ interface IProps {
 
 const RecommendationCard: React.FC<IProps> =
     ({
-         recommendationData: {
-             recommendationText,
-             id,
-             status,
-             title,
-             executionTime
-         },
+        recommendationData: {
+            description,
+            executionDate,
+            name,
+            status
+        },
         textLines = 3,
         navigateOnClick = true,
         touchable = true
-     }) => {
+    }) => {
 
         const [theme] = useTheme()
         const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
 
-        const isInProcess = (status === recommendationStatuses.IN_PROCESS)
+        const isInProcess = (status === RecommendationStatuses.IN_PROCESS)
 
         const onHandlePress = () => {
             navigation.navigate("RecommendationDetails")
@@ -43,7 +42,7 @@ const RecommendationCard: React.FC<IProps> =
         return (
             <ListItemWrapper touchable={touchable} onPress={navigateOnClick ? onHandlePress : undefined}>
                 <Title>
-                    <TitleText>{title}</TitleText>
+                    <TitleText>{name}</TitleText>
                     <Status>
                         <StatusText color={isInProcess ? theme.IN_PROCESS_COLOR : theme.DONE_COLOR}>
                             {isInProcess ? "В процессе" : "Готово"}
@@ -54,8 +53,8 @@ const RecommendationCard: React.FC<IProps> =
                         />
                     </Status>
                 </Title>
-                <ExecutionTime>{`Выполнить до ${executionTime}`}</ExecutionTime>
-                <RecommendationText numberOfLines={textLines} >{recommendationText}</RecommendationText>
+                <ExecutionTime>{`Выполнить до ${executionDate}`}</ExecutionTime>
+                <RecommendationText numberOfLines={textLines} >{description}</RecommendationText>
             </ListItemWrapper>
         )
     }

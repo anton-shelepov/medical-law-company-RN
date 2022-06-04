@@ -7,7 +7,7 @@ const initialState: IRecommendationsState = {
     isLoading: false,
 }
 
-const recommendationsReducer = (state = initialState, action: RecommendationsActions) => {
+const recommendationsReducer = (state = initialState, action: RecommendationsActions): IRecommendationsState => {
     switch (action.type) {
 
         case RECOMMENDATIONS_FETCH_REQUEST:
