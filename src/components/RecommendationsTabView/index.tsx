@@ -2,31 +2,32 @@ import React, { useState } from "react";
 import { FlatList, useWindowDimensions } from "react-native";
 import { TabBar, TabView } from "react-native-tab-view";
 import { RecommendationGroups } from "../../constants/enums";
-import { useAppSelector } from "../../hooks/useAppSelector";
 import { useTheme } from "../../hooks/useTheme";
 import { RecommendationItem } from "../../redux/reducers/recommendationsReducer/types";
 import RecommendationCard from "../RecommendationCard";
 import TabText from "../_common/_styles/TabText.styled";
 
-const RecommendationsTabView: React.FC = () => {
+
+interface IProps {
+    recommendations: RecommendationItem[],
+}
+
+const RecommendationsTabView: React.FC<IProps> = ({ recommendations }) => {
 
     const [index, setIndex] = useState(0)
     const [theme] = useTheme()
 
     const layout = useWindowDimensions();
-    
-    const recommendationsData = useAppSelector(state => state.recommendations.data)
-
 
     const [routes] = useState([
         { key: RecommendationGroups.DOCTOR, title: 'Врач' },
         { key: RecommendationGroups.LAWYER, title: 'Юрист' }
     ])
 
-    const RecommendationFlatList = ({ group }: { group: RecommendationGroups }) => {
+    const RecommendationFlatList: React.FC<{ group: RecommendationGroups }> = ({ group }) => {
         return (
             <FlatList
-                data={recommendationsData}
+                data={recommendations}
                 renderItem={({ item }: { item: RecommendationItem }) => (item.group === group) &&
                     <RecommendationCard recommendationData={item} />}
             />

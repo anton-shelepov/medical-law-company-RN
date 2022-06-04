@@ -1,5 +1,5 @@
-import {Action} from "redux";
-import {ActionType} from "typesafe-actions";
+import { Action } from "redux";
+import { ActionType } from "typesafe-actions";
 import { RECOMMENDATIONS_FETCH_FAILURE, RECOMMENDATIONS_FETCH_REQUEST, RECOMMENDATIONS_FETCH_SUCCESS } from "../../../constants/actionTypes";
 import { RecommendationGroups, RecommendationStatuses } from "../../../constants/enums";
 import { StateError } from "../../../types/errors";
@@ -28,7 +28,8 @@ export type RecommendationItem = {
 // Actions
 
 export interface IRecommendationsFetchRequest extends Action {
-    type: typeof RECOMMENDATIONS_FETCH_REQUEST
+    type: typeof RECOMMENDATIONS_FETCH_REQUEST,
+    payload: { userId: number },
 }
 
 export interface IRecommendationsFetchSuccess extends Action {

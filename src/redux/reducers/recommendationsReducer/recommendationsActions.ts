@@ -5,8 +5,9 @@ import { IRecommendationsFetchFailure, IRecommendationsFetchRequest, IRecommenda
 // FETCH ALL RECOMMENDATIONS
 
 export const recommendationsFetchRequest =
-    (): IRecommendationsFetchRequest => ({
-        type: RECOMMENDATIONS_FETCH_REQUEST
+    (userId: number): IRecommendationsFetchRequest => ({
+        type: RECOMMENDATIONS_FETCH_REQUEST,
+        payload: { userId },
     })
 
 export const recommendationsFetchSuccess =
