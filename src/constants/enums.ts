@@ -3,9 +3,14 @@ export enum messageTypes  {
     TO = "TO",
 }
 
-export enum recommendationStatuses {
+export enum RecommendationStatuses {
     IN_PROCESS = "IN_PROCESS",
     DONE = "DONE",
+}
+
+export enum RecommendationGroups {
+    DOCTOR = "DOCTOR",
+    LAWYER = "LAWYER",
 }
 
 export enum errorTypes {

@@ -12,10 +12,7 @@ export interface IUserState {
     accessToken: string,
     refreshToken: string,
     isAuth: boolean,
-    error: {
-        type: errorTypes,
-        message: string,
-    },
+    error: StateError,
     isLoading: boolean,
 }
 

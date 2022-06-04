@@ -2,12 +2,12 @@ import { call, put, StrictEffect, takeLatest } from "redux-saga/effects";
 import { AxiosError, AxiosResponse } from 'axios';
 import authAPI from '../../../api/auth.api';
 import { ISigninRequest } from '../../reducers/userReducer/types';
-import { LOGOUT_REQUEST, SIGNIN_REQUEST } from '../../../constants/actionTypes';
+import { LOGOUT_REQUEST, RECOMMENDATIONS_FETCH_REQUEST, SIGNIN_REQUEST } from '../../../constants/actionTypes';
 import { logoutFailure, logoutSuccess, signinFailure, signinSuccess } from "../../reducers/userReducer/userActions";
 import { removeFromSecureStore, setInSecureStore } from "../../../utils/secureStore/secureStore";
 import { errorTypes } from "../../../constants/enums";
 
-function* userSigninRequestSaga({ payload }: ISigninRequest) {
+function* recommendationsFetchSaga({ payload }: ISigninRequest) {
     try {
         const response: AxiosResponse = yield call(authAPI.signin, payload);
         yield call(setInSecureStore, 'access_token', response.data.access_token);
@@ -40,9 +40,9 @@ function* userLogoutRequestSaga() {
     }
 }
 
-function* authSaga(): Generator<StrictEffect> {
-    yield takeLatest(SIGNIN_REQUEST, userSigninRequestSaga);
+function* recommendationsSaga(): Generator<StrictEffect> {
+    yield takeLatest(RECOMMENDATIONS_FETCH_REQUEST, recommendationsFetchSaga);
     yield takeLatest(LOGOUT_REQUEST, userLogoutRequestSaga);
 }
 
-export default authSaga;
+export default recommendationsSaga;

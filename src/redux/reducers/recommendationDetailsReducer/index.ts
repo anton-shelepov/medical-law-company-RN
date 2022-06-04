@@ -1,11 +1,11 @@
-import { recommendationStatuses } from "../../../constants/enums";
+import { RecommendationStatuses } from "../../../constants/enums";
 import { IRecommendationDetailsState } from "./types.d";
 
 const initialState: IRecommendationDetailsState = {
     recommendationData: {
         id: 1,
         title: "Кардиолог",
-        status: recommendationStatuses.IN_PROCESS,
+        status: RecommendationStatuses.IN_PROCESS,
         executionTime: new Date().toLocaleDateString("en-GB").replace(/\//g, '.'),
         recommendationText: "Жалобы на повышенное давление, показываете результаты ЭКГ, холтера, имеются значительные отклонения характерные для непризывного заболевания. Просите направить вас на холтер, после чего сообщите дату записи и результаты посещения кардиолога, для того, чтобы мы могли дальше нарабатывать историю болезни",
         employeePosition: "lawyer",

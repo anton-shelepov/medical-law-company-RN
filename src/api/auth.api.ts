@@ -1,12 +1,13 @@
 import store from "../redux/store";
-import privateClient from "./axios.config";
+import privateClient from "./privateClient.config";
+import publicClient from "./publicClient.config";
 
 
 const authAPI = {
 
     path: 'auth',
 
-    signin: async (data) => await privateClient.post(`${authAPI.path}/signin`, data),
+    signin: async (data) => await publicClient.post(`${authAPI.path}/signin`, data),
 
     logout: async () => await privateClient.post(`${authAPI.path}/logout`),
 

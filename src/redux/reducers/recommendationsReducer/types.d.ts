@@ -1,30 +1,49 @@
 import {Action} from "redux";
 import {ActionType} from "typesafe-actions";
-import { recommendationStatuses } from "../../../constants/enums";
+import { RECOMMENDATIONS_FETCH_FAILURE, RECOMMENDATIONS_FETCH_REQUEST, RECOMMENDATIONS_FETCH_SUCCESS } from "../../../constants/actionTypes";
+import { RecommendationGroups, RecommendationStatuses } from "../../../constants/enums";
+import { StateError } from "../../../types/errors";
 import * as actions from "./recommendationsActions";
 
-// Root reducer state
+// Recommendations reducer state
 
 export interface IRecommendationsState {
-    recommendations: RecommendationsItem[],
+    data: RecommendationItem[],
+    error: StateError,
+    isLoading: boolean
 }
 
-// Root reducer parts
+// Recommendations reducer parts
 
-export type RecommendationsItem = {
+export type RecommendationItem = {
     id: number,
-    title: string,
-    status: recommendationStatuses,
-    executionTime: string,
-    recommendationText: string,
-    employeePosition: string,
+    group: RecommendationGroups,
+    name: string,
+    description: string,
+    status: RecommendationStatuses,
+    executionDate: string,
+    receiverId: number,
 }
 
 // Actions
 
-interface ISwitchTheme extends Action {
-
+export interface IRecommendationsFetchRequest extends Action {
+    type: typeof RECOMMENDATIONS_FETCH_REQUEST
 }
+
+export interface IRecommendationsFetchSuccess extends Action {
+    type: typeof RECOMMENDATIONS_FETCH_SUCCESS
+    payload: RecommendationsItems
+}
+
+export interface IRecommendationsFetchFailure extends Action {
+    type: typeof RECOMMENDATIONS_FETCH_FAILURE
+    payload: StateError
+}
+
+// Common reducer types
+
+
 
 // Combine actions type
 
