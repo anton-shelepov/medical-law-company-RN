@@ -1,20 +1,28 @@
-import { RECOMMENDATION_DETAILS_FETCH_FAILURE, RECOMMENDATION_DETAILS_FETCH_REQUEST, RECOMMENDATION_DETAILS_FETCH_SUCCESS } from "../../../constants/actionTypes"
+import {
+    RECOMMENDATION_DETAILS_FETCH_FAILURE,
+    RECOMMENDATION_DETAILS_FETCH_REQUEST,
+    RECOMMENDATION_DETAILS_FETCH_SUCCESS
+} from "../../../constants/actionTypes"
 import { StateError } from "../../../types/errors"
-import { RecommendationItem } from "../recommendationsReducer/types"
-import { IRecommendationDetailsFetchFailure, IRecommendationDetailsFetchRequest, IRecommendationDetailsFetchSuccess } from "./types"
+import {
+    IRecommendationDetailsFetchFailure,
+    IRecommendationDetailsFetchRequest,
+    IRecommendationDetailsFetchSuccess,
+    RecommendationDetailsFetchSuccessPayload
+} from "./types"
 
 // FETCH RECOMMENDATION DETAILS DATA
 
 export const recommendationDetailsFetchRequest =
-    (recommendationId: number): IRecommendationDetailsFetchRequest => ({
+    (userId: number, recommendationId: number): IRecommendationDetailsFetchRequest => ({
         type: RECOMMENDATION_DETAILS_FETCH_REQUEST,
-        payload: { recommendationId }
+        payload: { userId, recommendationId }
     })
 
 export const recommendationDetailsFetchSuccess =
-    (recommendationDetails: RecommendationItem): IRecommendationDetailsFetchSuccess => ({
+    (payload: RecommendationDetailsFetchSuccessPayload): IRecommendationDetailsFetchSuccess => ({
         type: RECOMMENDATION_DETAILS_FETCH_SUCCESS,
-        payload: recommendationDetails
+        payload
     })
 
 export const recommendationDetailsFetchFailure =

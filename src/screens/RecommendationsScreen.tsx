@@ -9,14 +9,12 @@ import { recommendationsFetchRequest } from "../redux/reducers/recommendationsRe
 const RecommendationsScreen: React.FC = () => {
 
     const dispatch = useAppDispatch()
-
     const decodedAccessToken = useDecodedToken(TokenTypes.accessToken)
+    const recommendationsData = useAppSelector(state => state.recommendations.data)
 
     useEffect(() => {
         dispatch(recommendationsFetchRequest(decodedAccessToken.sub))
     }, [])
-
-    const recommendationsData = useAppSelector(state => state.recommendations.data)
 
     return (
         <RecommendationsTabView recommendations={recommendationsData} />

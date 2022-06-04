@@ -29,15 +29,12 @@ export type UserRecommendationResult = {
 
 export interface IRecommendationDetailsFetchRequest extends Action {
     type: typeof RECOMMENDATION_DETAILS_FETCH_REQUEST,
-    payload: { recommendationId: number },
+    payload: { userId: number, recommendationId: number },
 }
 
 export interface IRecommendationDetailsFetchSuccess extends Action {
     type: typeof RECOMMENDATION_DETAILS_FETCH_SUCCESS
-    payload: {
-        recommendationInfo: RecommendationItem,
-        results: UserRecommendationResult[],
-    }
+    payload: RecommendationDetailsFetchSuccessPayload,
 }
 
 export interface IRecommendationDetailsFetchFailure extends Action {
@@ -45,6 +42,12 @@ export interface IRecommendationDetailsFetchFailure extends Action {
     payload: StateError
 }
 
+// Common reducer types
+
+export type RecommendationDetailsFetchSuccessPayload = {
+    recommendationInfo: RecommendationItem,
+    results: UserRecommendationResult[],
+}
 
 // Combine actions type
 

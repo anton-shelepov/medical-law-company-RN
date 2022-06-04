@@ -23,7 +23,8 @@ const RecommendationCard: React.FC<IProps> =
             description,
             executionDate,
             name,
-            status
+            status,
+            id
         },
         textLines = 3,
         navigateOnClick = true,
@@ -36,7 +37,7 @@ const RecommendationCard: React.FC<IProps> =
         const isInProcess = (status === RecommendationStatuses.IN_PROCESS)
 
         const onHandlePress = () => {
-            navigation.navigate("RecommendationDetails")
+            navigation.navigate("RecommendationDetails", { recommendationId: id })
         }
 
         return (

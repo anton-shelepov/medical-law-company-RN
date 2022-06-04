@@ -29,7 +29,8 @@ const RecommendationsTabView: React.FC<IProps> = ({ recommendations }) => {
             <FlatList
                 data={recommendations}
                 renderItem={({ item }: { item: RecommendationItem }) => (item.group === group) &&
-                    <RecommendationCard recommendationData={item} />}
+                    <RecommendationCard recommendationData={item} />
+                }
             />
         )
     }

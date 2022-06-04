@@ -3,16 +3,15 @@ import { useTheme } from "../../hooks/useTheme";
 import { UserRecommendationResult } from "../../redux/reducers/recommendationDetailsReducer/types";
 import globalStyles from "../../styles/globalStyles";
 import IoniconsSelector from "../../utils/IoniconsSelector";
-import AccordionContainer from "../_common/_styles/AccordionContainer.styled";
 import Accordion from "../_common/_styles/Accordion.styled";
+import AccordionContainer from "../_common/_styles/AccordionContainer.styled";
 import AccordionText from "../_common/_styles/AccordionText.styled";
 
 const UserRecommendationResultAccordion: React.FC<UserRecommendationResult> =
     ({
-         resultText,
-         documentsImages,
-         sentDate
-     }) => {
+        createdAt,
+        resultText,
+    }) => {
 
         const [theme] = useTheme()
 
@@ -20,7 +19,7 @@ const UserRecommendationResultAccordion: React.FC<UserRecommendationResult> =
             <IoniconsSelector iconName={'bookmark'} color={globalStyles.RED_COLOR_TONE} />
         )
 
-        const AccordionTitleRight = ({isExpanded}) => (
+        const AccordionTitleRight = ({ isExpanded }) => (
             <IoniconsSelector
                 useThemeColor={true}
                 iconName={isExpanded ? "chevron-up" : "chevron-down"}
@@ -30,7 +29,7 @@ const UserRecommendationResultAccordion: React.FC<UserRecommendationResult> =
         return (
             <AccordionContainer>
                 <Accordion
-                    title={`Результат от ${sentDate}`}
+                    title={`Результат от ${createdAt}`}
                     right={AccordionTitleRight}
                     left={AccordionTitleLeft}
                 >
