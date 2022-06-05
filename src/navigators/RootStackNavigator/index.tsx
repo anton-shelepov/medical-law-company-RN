@@ -2,14 +2,14 @@ import { useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import { useAppSelector } from "../hooks/useAppSelector";
-import { useTheme } from "../hooks/useTheme";
-import ChatScreen from "../screens/ChatScreen";
-import RecommendationDetailsScreen from "../screens/RecommendationDetailsScreen";
-import globalStyles from "../styles/globalStyles";
-import IoniconsSelector from "../utils/IoniconsSelector";
-import AuthStackNavigator from "./AuthStackNavigator";
-import RootDrawerNavigator from "./RootDrawerNavigator";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { useTheme } from "../../hooks/useTheme";
+import ChatScreen from "../../screens/ChatScreen";
+import RecommendationDetailsScreen from "../../screens/RecommendationDetailsScreen";
+import globalStyles from "../../styles/globalStyles";
+import IoniconsSelector from "../../utils/IoniconsSelector";
+import AuthStackNavigator from "../AuthStackNavigator";
+import RootDrawerNavigator from "../RootDrawerNavigator";
 
 
 export type RootStackParamList = {

@@ -8,7 +8,7 @@ import CreateNewMessageForm from "../components/_common/forms/CreateNewMessageFo
 import { TokenTypes } from "../constants/enums";
 import { useAppDispatch } from "../hooks/useAppDispatch";
 import { useAppSelector } from "../hooks/useAppSelector";
-import useDecodedToken from "../hooks/useAuthorizedUserId";
+import useDecodedToken from "../hooks/useDecodedToken";
 import { RootStackParamList } from "../navigators/RootStackNavigator";
 import { recommendationDetailsFetchRequest } from "../redux/reducers/recommendationDetailsReducer/recommendationDetailsActions";
 

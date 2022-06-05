@@ -7,7 +7,7 @@ import { RootStackParamList } from "../navigators/RootStackNavigator";
 
 type ChatProps = NativeStackScreenProps<RootStackParamList, "Chat">
 
-const ChatScreen: React.FC<ChatProps> = ({navigation, route: {params}}) => {
+const ChatScreen: React.FC<ChatProps> = ({ navigation, route: { params } }) => {
 
     useEffect(() => {
         navigation.setOptions({

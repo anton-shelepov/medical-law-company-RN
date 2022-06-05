@@ -4,8 +4,8 @@ import React from "react";
 import { TouchableOpacity } from "react-native";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { RootTabParamList } from "../../navigators/RootTabNavigator";
-import { DrawerContainer, UserName } from "./styles";
 import UserImage from "../_common/_styles/UserImage.styled";
+import { DrawerContainer, UserName } from "./styles";
 
 
 const DrawerProfileInfo: React.FC = () => {

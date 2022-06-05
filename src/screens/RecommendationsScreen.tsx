@@ -3,7 +3,7 @@ import RecommendationsTabView from "../components/RecommendationsTabView";
 import { TokenTypes } from "../constants/enums";
 import { useAppDispatch } from "../hooks/useAppDispatch";
 import { useAppSelector } from "../hooks/useAppSelector";
-import useDecodedToken from "../hooks/useAuthorizedUserId";
+import useDecodedToken from "../hooks/useDecodedToken";
 import { recommendationsFetchRequest } from "../redux/reducers/recommendationsReducer/recommendationsActions";
 
 const RecommendationsScreen: React.FC = () => {
