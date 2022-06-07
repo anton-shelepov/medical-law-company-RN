@@ -8,7 +8,7 @@ import RecommendationsScreen from "../../screens/RecommendationsScreen";
 
 const Tab = createBottomTabNavigator();
 
-const UserTabs: React.FC = () => {
+const userTabs = () => {
     return (
         <>
             <Tab.Screen
@@ -39,4 +39,4 @@ const UserTabs: React.FC = () => {
     )
 }
 
-export default UserTabs;
+export default userTabs;

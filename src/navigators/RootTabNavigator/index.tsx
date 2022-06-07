@@ -7,8 +7,8 @@ import useRole from "../../hooks/useRole";
 import { useTheme } from "../../hooks/useTheme";
 import globalStyles from "../../styles/globalStyles";
 import ioniconsTabSelector from "../../utils/IoniconsTabSelector";
-import EmployeeTabs from "./employeeTabs";
-import UserTabs from "./userTabs";
+import employeeTabs from "./employeeTabs";
+import userTabs from "./userTabs";
 
 const Tab = createBottomTabNavigator();
 
@@ -49,9 +49,9 @@ const RootTabNavigator = ({ navigation }) => {
             })}
             initialRouteName={"Home"}>
 
-            {role === AppRoles.USER && <UserTabs />}
+            {role === AppRoles.USER && userTabs()}
 
-            {role === AppRoles.EMPLOYEE && <EmployeeTabs />}
+            {role === AppRoles.EMPLOYEE && employeeTabs()}
 
         </Tab.Navigator>
     )

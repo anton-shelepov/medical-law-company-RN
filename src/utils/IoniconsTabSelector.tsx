@@ -24,6 +24,11 @@ const IoniconsTabSelector = (route: RouteProp<ParamListBase, string>, focused: b
         case 'Profile':
             iconName = focused ? 'person' : 'person-outline'
             break;
+
+        case 'Users':
+            iconName = focused ? 'md-mail' : 'md-mail-outline'
+            break;
+
     }
     return <Ionicons name={iconName} size={23} color={theme.TAB_BAR_ICONS_COLOR} />
 }

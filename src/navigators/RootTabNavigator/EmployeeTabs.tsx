@@ -6,7 +6,7 @@ import UsersScreen from "../../screens/UsersScreen";
 
 const Tab = createBottomTabNavigator();
 
-const EmployeeTabs: React.FC = () => {
+const employeeTabs = () => {
     return (
         <>
             <Tab.Screen
@@ -23,4 +23,4 @@ const EmployeeTabs: React.FC = () => {
     )
 }
 
-export default EmployeeTabs;
+export default employeeTabs;
