@@ -1,6 +1,5 @@
 import { TokenTypes } from "../../constants/enums";
-import { Tokens } from "../../redux/reducers/userReducer/types";
-import { getFromSecureStore } from "./secureStore"
+import { getFromSecureStore } from "./secureStore";
 
 async function getTokensFromSecureStore() {
     try {
@@ -10,7 +9,7 @@ async function getTokensFromSecureStore() {
         ])
         return { accessToken, refreshToken }
 
-    } catch (error) { throw error }
+    } catch (error) { console.log(error) }
 }
 
 export default getTokensFromSecureStore;

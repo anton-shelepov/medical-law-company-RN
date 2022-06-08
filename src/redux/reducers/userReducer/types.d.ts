@@ -8,11 +8,11 @@ import * as actions from "./userActions";
 // User reducer state
 
 export interface IUserState {
-    data: UserData,
+    data: UserData | {},
     accessToken: string,
     refreshToken: string,
     isAuth: boolean,
-    error: StateError,
+    error: StateError | {},
     isLoading: boolean,
 }
 

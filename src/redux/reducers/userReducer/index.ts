@@ -2,10 +2,10 @@ import { LOGOUT_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS, SIGNIN_FAILURE, SIGNIN_
 import { IUserState, UserActions } from "./types";
 
 const initialState: IUserState = {
-    data: null,
-    accessToken: null,
-    refreshToken: null,
-    error: null,
+    data: {},
+    accessToken: '',
+    refreshToken: '',
+    error: {},
     isLoading: false,
     isAuth: false,
 }
@@ -28,7 +28,7 @@ const userReducer = (state = initialState, action: UserActions): IUserState => {
                 accessToken: action.payload.accessToken,
                 refreshToken: action.payload.refreshToken,
                 isLoading: false,
-                error: null,
+                error: {},
             }
 
         case SIGNIN_FAILURE:
@@ -36,9 +36,9 @@ const userReducer = (state = initialState, action: UserActions): IUserState => {
                 ...state,
                 error: action.payload,
                 isAuth: false,
-                accessToken: null,
-                refreshToken: null,
-                isLoading: state.isLoading && false
+                accessToken: '',
+                refreshToken: '',
+                isLoading: false
             }
 
         // ------ LOGOUT ------
@@ -53,9 +53,10 @@ const userReducer = (state = initialState, action: UserActions): IUserState => {
             return {
                 ...state,
                 isAuth: false,
-                accessToken: null,
-                refreshToken: null,
-                isLoading: state.isLoading && false,
+                accessToken: '',
+                refreshToken: '',
+                isLoading: false,
+                data: {},
             }
 
         case LOGOUT_FAILURE: // TODO: Обработать возможные ошибки

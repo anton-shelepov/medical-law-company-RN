@@ -1,15 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit';
+import createSagaMiddleware from "redux-saga";
 import chatReducer from "./reducers/chatReducer";
 import chatsReducer from "./reducers/chatsReducer";
 import homeReducer from "./reducers/homeReducer";
-import recommendationDetailsReducer from "./reducers/recommendationDetailsReducer";
-import themeReducer from "./reducers/themeReducer";
 import profileReducer from "./reducers/profileReducer";
-import createSagaMiddleware from "redux-saga";
-import rootSaga from './reduxSaga/rootSaga';
-import userReducer from './reducers/userReducer';
+import recommendationDetailsReducer from "./reducers/recommendationDetailsReducer";
 import recommendationsReducer from './reducers/recommendationsReducer';
-import axios from 'axios';
+import themeReducer from "./reducers/themeReducer";
+import userReducer from './reducers/userReducer';
+import usersListReducer from './reducers/usersListReducer';
+import rootSaga from './reduxSaga/rootSaga';
 
 
 let sagaMiddleware = createSagaMiddleware();
@@ -25,6 +25,7 @@ const store = configureStore({
         chat: chatReducer,
         recommendationDetails: recommendationDetailsReducer,
         profile: profileReducer,
+        usersList: usersListReducer,
     },
 })
 

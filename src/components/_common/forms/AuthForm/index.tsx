@@ -1,15 +1,15 @@
-import React from "react";
-import { View } from "react-native";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { useAppDispatch } from "../../../../hooks/useAppDispatch";
-import ValidatedTextInput from "../../inputs/ValidatedTextInput";
-import FilledButton from "../../buttons/FilledButton";
 import { yupResolver } from "@hookform/resolvers/yup";
-import AuthFormSchema from "./schema";
-import { signinRequest } from "../../../../redux/reducers/userReducer/userActions";
-import ErrorText from "../../_styles/ErrorText.styled";
-import { useAppSelector } from "../../../../hooks/useAppSelector";
+import React from "react";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { View } from "react-native";
 import { errorTypes } from "../../../../constants/enums";
+import { useAppDispatch } from "../../../../hooks/useAppDispatch";
+import { useAppSelector } from "../../../../hooks/useAppSelector";
+import { signinRequest } from "../../../../redux/reducers/userReducer/userActions";
+import FilledButton from "../../buttons/FilledButton";
+import ValidatedTextInput from "../../inputs/ValidatedTextInput";
+import ErrorText from "../../_styles/ErrorText.styled";
+import AuthFormSchema from "./schema";
 
 export interface IAuthFormData {
     phoneNumber: string;
@@ -31,7 +31,7 @@ const AuthForm: React.FC = () => {
             password: '',
         })
     }
-    const error = useAppSelector(state => state.user.error)
+    const user = useAppSelector(state => state.user)
 
     return (
         <View style={{ width: '100%', flex: 1, marginTop: 60 }}>
@@ -65,13 +65,17 @@ const AuthForm: React.FC = () => {
             </View>
 
             {
-                error?.type === errorTypes.AUTH &&
+                user.error?.type === errorTypes.AUTH &&
                 <ErrorText style={{ marginBottom: 15, alignSelf: "center" }}>
-                    {error.message}
+                    {user.error.message}
                 </ErrorText>
             }
 
-            <FilledButton title="Авторизоваться" onPress={handleSubmit(onHandleSubmit)} />
+            <FilledButton
+                title="Авторизоваться"
+                isLoading={user.isLoading}
+                onPress={handleSubmit(onHandleSubmit)}
+            />
         </View>
     );
 }

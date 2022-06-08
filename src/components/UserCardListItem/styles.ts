@@ -24,9 +24,9 @@ export const PhoneNumber = styled(Text)`
 
 export const ContainerBottom = styled.View`
     margin-top: 15px;
-    background-color: ${({ theme }) => theme.CARD_EXPANDED_BACKGROUND_COLOR};
-    border-radius: 15px;
-    padding: 10px;
+    padding: 20px;
+    flex-direction: row;
+    justify-content: space-around;
 `
 
 export const RecommendationInfoText = styled(Text)`

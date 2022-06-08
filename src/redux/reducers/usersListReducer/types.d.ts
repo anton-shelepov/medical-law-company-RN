@@ -1,29 +1,26 @@
 import { Action, ActionType } from "typesafe-actions";
 import { IAuthFormData } from "../../../components/_common/forms/AuthForm";
 import { LOGOUT_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS, SIGNIN_FAILURE, SIGNIN_REQUEST, SIGNIN_SUCCESS } from "../../../constants/actionTypes";
-import { AppRoles } from "../../../constants/enums";
 import { StateError } from "../../../types/errors";
 import * as actions from "./usersListActions";
 
 // User reducer state
 
 export interface IUsersListState {
-    data: UserData,
-    accessToken: string,
-    refreshToken: string,
-    isAuth: boolean,
+    data: {
+        users: UsersListItem[],
+    },
     error: StateError,
     isLoading: boolean,
 }
 
 // User reducer parts
 
-export type UserData = {
+export type UsersListItem = {
     id: number,
     fullName: string,
-    role: AppRoles,
+    phoneNumber: string,
     imageURL?: string,
-    position?: string,
 }
 
 // Actions
