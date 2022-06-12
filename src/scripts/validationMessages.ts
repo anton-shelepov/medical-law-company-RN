@@ -1,3 +1,9 @@
+// CONSTANTS
+
+export const CORRECT_FULL_NAME = 'Введите корректное ФИО';
+
+// FUNCTIONS
+
 export function fieldIsRequired(name) {
     return `Пожалуйста введите: ${name}*`
 }
@@ -11,3 +17,4 @@ export function minMaxlength(type: 'min' | 'max', count: number) {
             return `Необходимо ввести менее ${count} символов*`
     }
 }
+

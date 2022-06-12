@@ -1,35 +1,23 @@
 import { AxiosResponse } from 'axios';
 import { call, put, StrictEffect, takeLatest } from "redux-saga/effects";
-import authAPI from '../../../api/auth.api';
-import { SIGNIN_REQUEST } from '../../../constants/actionTypes';
-import { errorTypes, TokenTypes } from "../../../constants/enums";
-import { setInSecureStore } from "../../../utils/secureStore/secureStore";
-import { ISigninRequest } from '../../reducers/userReducer/types';
-import { signinFailure, signinSuccess } from "../../reducers/userReducer/userActions";
+import usersAPI from '../../../api/users.api';
+import { CURRENT_USER_DATA_FETCH_REQUEST } from '../../../constants/actionTypes';
+import { currentUserDataFetchFailure, currentUserDataFetchSuccess } from "../../reducers/userReducer/userActions";
 
-function* userSigninRequestSaga({ payload }: ISigninRequest) {
+function* currentUserDataFetchSaga() {
+    console.log('here')
     try {
-        const response: AxiosResponse = yield call(authAPI.signin, payload);
-        yield call(setInSecureStore, TokenTypes.accessToken, response.data.access_token);
-        yield call(setInSecureStore, TokenTypes.refreshToken, response.data.refresh_token);
-        yield put(signinSuccess({
-            accessToken: response.data.access_token,
-            refreshToken: response.data.refresh_token,
-        }));
+        const response: AxiosResponse = yield call(usersAPI.fetchCurrentUserData);
+        yield put(currentUserDataFetchSuccess(response.data))
 
     } catch (error) {
-        if (error.response.status === 403) {
-            yield put(signinFailure({
-                type: errorTypes.AUTH,
-                message: "Неверный номер телефона или пароль"
-            }));
-        }
+        yield put(currentUserDataFetchFailure({ type: '', message: error.message }))
         return error
     }
 }
 
 function* userSaga(): Generator<StrictEffect> {
-    yield takeLatest(SIGNIN_REQUEST, userSigninRequestSaga);
+    yield takeLatest(CURRENT_USER_DATA_FETCH_REQUEST, currentUserDataFetchSaga);
 }
 
 export default userSaga;

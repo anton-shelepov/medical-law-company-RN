@@ -1,4 +1,4 @@
-import {Theme} from "../redux/reducers/themeReducer/types";
+import { Theme } from "../redux/reducers/themeReducer/types";
 
 export const darkTheme: Theme = {
     mode: "dark",
@@ -26,7 +26,7 @@ export const lightTheme: Theme = {
     BACKGROUND_COLOR: "#f3f3f3",
     TEXT_COLOR: "#000000",
     PLACEHOLDER_COLOR: "rgba(0,0,0,0.6)",
-    TEXT_INPUT_COLOR: "#ffffff",
+    TEXT_INPUT_COLOR: "#fdfdfd",
     TEXT_INPUT_BORDER_COLOR: "#d0d0d0",
     BUTTON_COLOR: "",
     BUTTON_TEXT_COLOR: "",

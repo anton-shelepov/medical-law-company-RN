@@ -5,7 +5,7 @@ import { LOGOUT_REQUEST, SIGNIN_REQUEST } from '../../../constants/actionTypes';
 import { errorTypes, TokenTypes } from "../../../constants/enums";
 import { removeFromSecureStore, setInSecureStore } from "../../../utils/secureStore/secureStore";
 import { ISigninRequest } from '../../reducers/userReducer/types';
-import { logoutFailure, logoutSuccess, signinFailure, signinSuccess } from "../../reducers/userReducer/userActions";
+import { currentUserDataFetchRequest, logoutFailure, logoutSuccess, signinFailure, signinSuccess } from "../../reducers/userReducer/userActions";
 
 function* userSigninRequestSaga({ payload }: ISigninRequest) {
     try {
@@ -16,6 +16,7 @@ function* userSigninRequestSaga({ payload }: ISigninRequest) {
             accessToken: response.data.access_token,
             refreshToken: response.data.refresh_token,
         }));
+        yield put(currentUserDataFetchRequest())
 
     } catch (error) {
         if (error.response.status === 403) {

@@ -2,15 +2,15 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
 import { TouchableOpacity } from "react-native";
+import userImagePlaceholder from "../../../assets/images/user-image-placeholder.webp";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { RootTabParamList } from "../../navigators/RootTabNavigator";
 import UserImage from "../_common/_styles/UserImage.styled";
 import { DrawerContainer, UserName } from "./styles";
 
-
 const DrawerProfileInfo: React.FC = () => {
 
-    const { userImageSrc, userName } = useAppSelector(state => state.profile.profileData)
+    const { fullName, imageURL } = useAppSelector(state => state.user.data)
     const navigation = useNavigation<NativeStackNavigationProp<RootTabParamList>>()
 
     return (
@@ -19,9 +19,9 @@ const DrawerProfileInfo: React.FC = () => {
                 <UserImage
                     width="80px"
                     height="80px"
-                    source={{ uri: userImageSrc }}
+                    source={imageURL ? { uri: imageURL } : userImagePlaceholder}
                 />
-                <UserName>{userName}</UserName>
+                <UserName>{fullName}</UserName>
             </DrawerContainer>
         </TouchableOpacity>
 

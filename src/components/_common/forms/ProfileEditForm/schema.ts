@@ -1,16 +1,32 @@
 import * as yup from "yup";
-import { fieldIsRequired, minMaxlength } from "../../../../scripts/validationMessages";
+import { CORRECT_FULL_NAME, minMaxlength } from "../../../../scripts/validationMessages";
 
-const CreateNewMessageFormSchema = yup.object().shape({
+const ProfileEditFormSchema = yup.object().shape({
 
-    phone: yup.string()
-        .required(fieldIsRequired("Номер телефона")),
+    fullName: yup.string()
+        .optional()
+        .matches(/[А-Яа-я]/g, CORRECT_FULL_NAME)
+        .min(9, CORRECT_FULL_NAME)
+        .max(40, CORRECT_FULL_NAME),
 
-    password: yup.string()
+    oldPassword: yup.string()
+        .optional()
+        .min(8, minMaxlength('min', 8))
+        .max(32, minMaxlength('max', 32)),
+
+    newPassword: yup.string()
+        .optional()
+        .matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, 'Пароль слишком легкий')
+        .min(8, minMaxlength('min', 8))
+        .max(32, minMaxlength('max', 32)),
+
+    confirmNewPassword: yup.string()
+        .optional()
+
         .min(8, minMaxlength('min', 8))
         .max(32, minMaxlength('max', 32))
-        .required(fieldIsRequired("Пароль")),
+        .oneOf([yup.ref('newPassword'), null], 'Корректно подтвердите новый пароль'),
 
 });
 
-export default CreateNewMessageFormSchema;
+export default ProfileEditFormSchema;

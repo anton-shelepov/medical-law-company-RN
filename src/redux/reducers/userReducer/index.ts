@@ -1,11 +1,16 @@
-import { LOGOUT_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS, SIGNIN_FAILURE, SIGNIN_REQUEST, SIGNIN_SUCCESS } from "../../../constants/actionTypes";
+import { CURRENT_USER_DATA_FETCH_FAILURE, CURRENT_USER_DATA_FETCH_REQUEST, CURRENT_USER_DATA_FETCH_SUCCESS, LOGOUT_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS, SIGNIN_FAILURE, SIGNIN_REQUEST, SIGNIN_SUCCESS } from "../../../constants/actionTypes";
+import { AppRoles } from "../../../constants/enums";
 import { IUserState, UserActions } from "./types";
 
 const initialState: IUserState = {
-    data: {},
+    data: {
+        fullName: '',
+        id: null,
+        role: AppRoles.USER,
+    },
     accessToken: '',
     refreshToken: '',
-    error: {},
+    error: null,
     isLoading: false,
     isAuth: false,
 }
@@ -18,6 +23,7 @@ const userReducer = (state = initialState, action: UserActions): IUserState => {
         case SIGNIN_REQUEST:
             return {
                 ...state,
+                error: null,
                 isLoading: true,
             }
 
@@ -28,7 +34,7 @@ const userReducer = (state = initialState, action: UserActions): IUserState => {
                 accessToken: action.payload.accessToken,
                 refreshToken: action.payload.refreshToken,
                 isLoading: false,
-                error: {},
+                error: null,
             }
 
         case SIGNIN_FAILURE:
@@ -51,18 +57,38 @@ const userReducer = (state = initialState, action: UserActions): IUserState => {
 
         case LOGOUT_SUCCESS:
             return {
-                ...state,
-                isAuth: false,
-                accessToken: '',
-                refreshToken: '',
-                isLoading: false,
-                data: {},
+                ...initialState,
             }
 
-        case LOGOUT_FAILURE: // TODO: Обработать возможные ошибки
+        case LOGOUT_FAILURE:
             return {
                 ...state,
             }
+
+        // ------ CURRENT USER DATA ------
+
+        case CURRENT_USER_DATA_FETCH_REQUEST:
+            return {
+                ...state,
+                isLoading: true,
+                error: null,
+            }
+
+        case CURRENT_USER_DATA_FETCH_SUCCESS:
+            return {
+                ...state,
+                data: action.payload,
+                isLoading: false,
+                error: null,
+            }
+
+        case CURRENT_USER_DATA_FETCH_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                isLoading: false,
+            }
+
 
         default:
             return state

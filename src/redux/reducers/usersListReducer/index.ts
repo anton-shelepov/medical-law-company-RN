@@ -1,20 +1,41 @@
-import { SIGNIN_REQUEST } from "../../../constants/actionTypes";
+import { PINNED_USERS_FETCH_FAILURE, PINNED_USERS_FETCH_REQUEST, PINNED_USERS_FETCH_SUCCESS } from "../../../constants/actionTypes";
+import { IUsersListState, usersListActions } from "./types";
 
-const initialState: IUserState = {
-    data: null,
-    error: null,
+const initialState: IUsersListState = {
+    data: {
+        users: [],
+    },
+    error: {},
     isLoading: false,
 }
 
-const usersListReducer = (state = initialState, action: UserActions): IUserState => {
+const usersListReducer = (state = initialState, action: usersListActions): IUsersListState => {
     switch (action.type) {
 
-        // ------ SIGNIN ------
+        // ------ FETCH PINNED USERS ------
 
-        case SIGNIN_REQUEST:
+        case PINNED_USERS_FETCH_REQUEST:
             return {
                 ...state,
                 isLoading: true,
+                error: {},
+            }
+
+        case PINNED_USERS_FETCH_SUCCESS:
+            return {
+                ...state,
+                data: {
+                    users: action.payload,
+                },
+                isLoading: false,
+                error: {}
+            }
+
+        case PINNED_USERS_FETCH_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
             }
 
 

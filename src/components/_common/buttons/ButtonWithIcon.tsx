@@ -12,8 +12,8 @@ interface IProps extends TouchableOpacityProps {
 const ButtonWithIcon: React.FC<IProps> = ({ iconName, title, ...touchableOpacityProps }) => {
     return (
         <TouchableOpacity {...touchableOpacityProps} style={{ alignItems: 'center', opacity: 0.8 }}>
-            <IoniconsSelector color="red" iconName={iconName} size={26} />
-            <Text style={{ marginTop: 10, color: 'red', fontWeight: 'bold' }}>{title}</Text>
+            <IoniconsSelector color="#8f8f8f" iconName={iconName} size={26} />
+            <Text style={{ marginTop: 10, color: '#8f8f8f', fontWeight: 'bold' }}>{title}</Text>
         </TouchableOpacity>
     )
 }

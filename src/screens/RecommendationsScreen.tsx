@@ -1,23 +1,36 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect } from "react";
+import ActivityIndicatorView from "../components/ActivityIndicatorView";
 import RecommendationsTabView from "../components/RecommendationsTabView";
 import { TokenTypes } from "../constants/enums";
 import { useAppDispatch } from "../hooks/useAppDispatch";
 import { useAppSelector } from "../hooks/useAppSelector";
 import useDecodedToken from "../hooks/useDecodedToken";
+import { RootStackParamList } from "../navigators/RootStackNavigator";
 import { recommendationsFetchRequest } from "../redux/reducers/recommendationsReducer/recommendationsActions";
 
-const RecommendationsScreen: React.FC = () => {
+
+type RecommendationsProps = NativeStackScreenProps<RootStackParamList, "RecommendationsReview">
+
+const RecommendationsScreen: React.FC<RecommendationsProps> = ({ route: { params } }) => {
 
     const dispatch = useAppDispatch()
     const decodedAccessToken = useDecodedToken(TokenTypes.accessToken)
-    const recommendationsData = useAppSelector(state => state.recommendations.data)
+    const recommendations = useAppSelector(state => state.recommendations)
 
     useEffect(() => {
-        dispatch(recommendationsFetchRequest(decodedAccessToken.sub))
+        if (params !== undefined)
+            dispatch(recommendationsFetchRequest(params.userId))
+        else
+            dispatch(recommendationsFetchRequest(decodedAccessToken.sub))
     }, [])
 
+    if (recommendations.isLoading) {
+        return <ActivityIndicatorView />
+    }
+
     return (
-        <RecommendationsTabView recommendations={recommendationsData} />
+        <RecommendationsTabView recommendations={recommendations.data} />
     )
 }
 

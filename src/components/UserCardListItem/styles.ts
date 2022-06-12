@@ -23,7 +23,8 @@ export const PhoneNumber = styled(Text)`
 `
 
 export const ContainerBottom = styled.View`
-    margin-top: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding: 20px;
     flex-direction: row;
     justify-content: space-around;

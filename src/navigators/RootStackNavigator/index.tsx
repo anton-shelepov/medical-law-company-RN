@@ -5,7 +5,9 @@ import { TouchableOpacity } from "react-native";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { useTheme } from "../../hooks/useTheme";
 import ChatScreen from "../../screens/ChatScreen";
+import RecommendationCreatingScreen from "../../screens/RecommendationCreatingScreen";
 import RecommendationDetailsScreen from "../../screens/RecommendationDetailsScreen";
+import RecommendationsScreen from "../../screens/RecommendationsScreen";
 import globalStyles from "../../styles/globalStyles";
 import IoniconsSelector from "../../utils/IoniconsSelector";
 import AuthStackNavigator from "../AuthStackNavigator";
@@ -16,7 +18,9 @@ export type RootStackParamList = {
     RootDrawNavigator,
     RecommendationDetails: { recommendationId: number },
     AuthStack,
+    RecommendationCreating: { userId: number },
     Chat: { id: number },
+    RecommendationsReview: { userId: number },
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -56,6 +60,16 @@ const RootStackNavigator = () => {
                         <Stack.Screen
                             name={"Chat"}
                             component={ChatScreen}
+                        />
+                        <Stack.Screen
+                            name={"RecommendationCreating"}
+                            component={RecommendationCreatingScreen}
+                            options={{ title: "Создание рекомендации" }}
+                        />
+                        <Stack.Screen
+                            name={"RecommendationsReview"}
+                            component={RecommendationsScreen}
+                            options={{ title: "Рекомендации" }}
                         />
                     </>
                 ) : (

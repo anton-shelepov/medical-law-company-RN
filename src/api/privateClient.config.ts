@@ -1,6 +1,9 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { TokenTypes } from "../constants/enums";
-import { getFromSecureStore, removeFromSecureStore } from "../utils/secureStore/secureStore";
+import { Tokens } from "../redux/reducers/userReducer/types";
+import { logoutSuccess } from "../redux/reducers/userReducer/userActions";
+import store from "../redux/store";
+import { getFromSecureStore, removeFromSecureStore, setInSecureStore } from "../utils/secureStore/secureStore";
 
 
 const privateClient = axios.create()
@@ -8,11 +11,7 @@ const privateClient = axios.create()
 privateClient.interceptors.request.use(
     async config => {
         const accessToken = await getFromSecureStore(TokenTypes.accessToken)
-        config.headers = {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${accessToken}`
-        }
+        config.headers.Authorization = `Bearer ${accessToken}`;
         config.baseURL = "http://192.168.0.51:3001/";
         config.withCredentials = true;
 
@@ -36,28 +35,35 @@ privateClient.interceptors.response.use(
         console.log('error', error);
         const originalRequest = error.config
 
-        const isRefreshRequestFailed = error.response.status === 401 && originalRequest.url.includes('auth/refresh')
+        const isRefreshAttempted = originalRequest.url.includes('auth/refresh')
 
         // If not authorized (invalid access token)
-        if (!isRefreshRequestFailed) {
+        if (error.response.status === 401 && !isRefreshAttempted) {
+
             const refreshToken = await getFromSecureStore(TokenTypes.refreshToken)
-            const tokens = await privateClient.post('auth/refresh', undefined, {
+            const tokens: Tokens = await privateClient.post('auth/refresh', undefined, {
                 headers: {
-                    'Authorization': `Bearer ${refreshToken}`,
-                },
+                    'Authorization': `Bearer ${refreshToken}`
+                }
             })
-            console.log(tokens)
-            // await Promise.all([setInSecureStore(tokens), setInSecureStore])
-            // axios.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
-            // return privateClient(originalRequest);
+
+            await Promise.all([
+                setInSecureStore(TokenTypes.accessToken, tokens.accessToken),
+                setInSecureStore(TokenTypes.refreshToken, tokens.refreshToken)])
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + tokens.accessToken;
+
+
+            return privateClient(originalRequest);
         }
 
         // If refresh request was failed (invalid refresh token)
-        if (isRefreshRequestFailed) {
+        if (error.response.status === 401 && isRefreshAttempted) {
             await Promise.all([
                 removeFromSecureStore(TokenTypes.accessToken),
                 removeFromSecureStore(TokenTypes.refreshToken)
             ])
+            const { dispatch } = store;
+            dispatch(logoutSuccess())
         }
 
         return Promise.reject(error);

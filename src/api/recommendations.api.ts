@@ -9,6 +9,13 @@ const recommendationsAPI = {
         return await privateClient.get(
             recommendationsAPI.path + userId + '/recommendations'
         )
+    },
+
+    async createNewRecommendation(userId: number, data) {
+        return await privateClient.post(
+            recommendationsAPI.path + userId + '/recommendations',
+            data
+        )
     }
 }
 

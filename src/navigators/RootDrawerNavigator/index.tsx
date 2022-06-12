@@ -1,4 +1,5 @@
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
+import { setStatusBarBackgroundColor } from "expo-status-bar";
 import * as WebBrowser from 'expo-web-browser';
 import React, { useEffect } from "react";
 import DrawerProfileInfo from "../../components/DrawerProfileInfo";
@@ -6,6 +7,7 @@ import links from "../../constants/links";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { useTheme } from "../../hooks/useTheme";
 import { logoutRequest } from "../../redux/reducers/userReducer/userActions";
+import globalStyles from "../../styles/globalStyles";
 import { darkTheme, lightTheme } from "../../styles/themes";
 import RootTabNavigator from "../RootTabNavigator";
 
@@ -22,6 +24,10 @@ const RootDrawerNavigator = () => {
     const isLightMode = theme.mode === lightTheme.mode
 
     const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        setStatusBarBackgroundColor(globalStyles.RED_COLOR_TONE, null);
+    })
 
     return (
         <Drawer.Navigator

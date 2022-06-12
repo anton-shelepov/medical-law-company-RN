@@ -46,6 +46,7 @@ const RootTabNavigator = ({ navigation }) => {
                 },
                 headerStyle: { backgroundColor: globalStyles.RED_COLOR_TONE },
                 headerTitleStyle: { color: 'white', fontSize: 22 },
+                contentStyle: { backgroundColor: theme.BACKGROUND_COLOR }
             })}
             initialRouteName={"Home"}>
 

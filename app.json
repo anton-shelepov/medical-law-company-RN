@@ -29,6 +29,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Для отправки фото необходимо разрешить доступ к галерее"
+        }
+      ]
+    ]
   }
 }

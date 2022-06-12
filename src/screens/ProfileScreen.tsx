@@ -10,7 +10,7 @@ const ProfileScreen: React.FC = () => {
 
     return (
         <ScrollableContainer>
-            <ProfileCard />
+            <ProfileCard userImageSrc={user.imageURL} userName={user.fullName} />
             <ProfileEditForm />
         </ScrollableContainer>
     )

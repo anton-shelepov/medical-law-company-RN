@@ -1,20 +1,20 @@
-import { SIGNUP_FAILURE, SIGNUP_REQUEST, SIGNUP_SUCCESS } from "../../../constants/actionTypes"
+import { PINNED_USERS_FETCH_FAILURE, PINNED_USERS_FETCH_REQUEST, PINNED_USERS_FETCH_SUCCESS } from "../../../constants/actionTypes"
+import { StateError } from "../../../types/errors"
+import { IPinnedUsersFetchFailure, IPinnedUsersFetchRequest, IPinnedUsersFetchSuccess, UsersListItem } from "./types"
 
+// USERS FETCH
 
-// SIGNUP
-
-export const signupRequest = (data) => ({
-    type: SIGNUP_REQUEST,
-    payload: data
+export const pinnedUsersFetchRequest = (): IPinnedUsersFetchRequest => ({
+    type: PINNED_USERS_FETCH_REQUEST,
 })
 
-export const signupSuccess = () => ({
-    type: SIGNUP_SUCCESS,
-    payload: true,
+export const pinnedUsersFetchSuccess = (users: UsersListItem[]): IPinnedUsersFetchSuccess => ({
+    type: PINNED_USERS_FETCH_SUCCESS,
+    payload: users,
 })
 
-export const signupFailure = (error: any) => ({
-    type: SIGNUP_FAILURE,
-    payload: true,
+export const pinnedUsersFetchFailure = (error: StateError): IPinnedUsersFetchFailure => ({
+    type: PINNED_USERS_FETCH_FAILURE,
+    payload: error,
 })
 

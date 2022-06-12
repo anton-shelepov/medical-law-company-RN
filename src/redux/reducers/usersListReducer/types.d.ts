@@ -1,6 +1,5 @@
 import { Action, ActionType } from "typesafe-actions";
-import { IAuthFormData } from "../../../components/_common/forms/AuthForm";
-import { LOGOUT_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS, SIGNIN_FAILURE, SIGNIN_REQUEST, SIGNIN_SUCCESS } from "../../../constants/actionTypes";
+import { PINNED_USERS_FETCH_FAILURE, PINNED_USERS_FETCH_REQUEST, PINNED_USERS_FETCH_SUCCESS, SEARCHED_USERS_FETCH_FAILURE, SEARCHED_USERS_FETCH_REQUEST, SEARCHED_USERS_FETCH_SUCCESS } from "../../../constants/actionTypes";
 import { StateError } from "../../../types/errors";
 import * as actions from "./usersListActions";
 
@@ -8,9 +7,9 @@ import * as actions from "./usersListActions";
 
 export interface IUsersListState {
     data: {
-        users: UsersListItem[],
+        users: UsersListItem[] | [],
     },
-    error: StateError,
+    error: StateError | {},
     isLoading: boolean,
 }
 
@@ -23,44 +22,44 @@ export type UsersListItem = {
     imageURL?: string,
 }
 
-// Actions
+// ACTIONS
 
-export interface ISigninRequest extends Action {
-    type: typeof SIGNIN_REQUEST
-    payload: IAuthFormData,
+// Pinned users fetch
+
+export interface IPinnedUsersFetchRequest extends Action {
+    type: typeof PINNED_USERS_FETCH_REQUEST
 }
 
-export interface ISigninSuccess extends Action {
-    type: typeof SIGNIN_SUCCESS
-    payload: Tokens
+export interface IPinnedUsersFetchSuccess extends Action {
+    type: typeof PINNED_USERS_FETCH_SUCCESS
+    payload: UsersListItem[],
 }
 
-export interface ISigninFailure extends Action {
-    type: typeof SIGNIN_FAILURE
+export interface IPinnedUsersFetchFailure extends Action {
+    type: typeof PINNED_USERS_FETCH_FAILURE
     payload: StateError,
 }
 
-export interface ILogoutRequest extends Action {
-    type: typeof LOGOUT_REQUEST
+// Searched users fetch
+
+export interface ISearchedUsersFetchRequest extends Action {
+    type: typeof SEARCHED_USERS_FETCH_REQUEST
 }
 
-export interface ILogoutSuccess extends Action {
-    type: typeof LOGOUT_SUCCESS
+export interface ISearchedUsersFetchSuccess extends Action {
+    type: typeof SEARCHED_USERS_FETCH_SUCCESS
+    payload: UsersListItem[],
 }
 
-export interface ILogoutFailure extends Action {
-    type: typeof LOGOUT_FAILURE
-    payload: string | unknown,
+export interface ISearchedFetchFailure extends Action {
+    type: typeof SEARCHED_USERS_FETCH_FAILURE
+    payload: StateError,
 }
+
 
 // Common reducer types
-
-export type Tokens = {
-    accessToken: string,
-    refreshToken: string,
-}
 
 
 // Combine actions type
 
-export type UserActions = ActionType<typeof actions>;
+export type usersListActions = ActionType<typeof actions>;

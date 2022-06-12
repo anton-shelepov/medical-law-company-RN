@@ -1,11 +1,16 @@
-import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { darkTheme } from "../../styles/themes";
+import { setStatusBarBackgroundColor } from "expo-status-bar";
+import React, { useEffect } from "react";
 import AuthScreen from "../../screens/AuthScreen";
+import { darkTheme } from "../../styles/themes";
 
 const AuthStackNavigator = () => {
 
     const Stack = createNativeStackNavigator()
+
+    useEffect(() => {
+        setStatusBarBackgroundColor(darkTheme.BACKGROUND_COLOR, false)
+    }, [])
 
     return (
         <Stack.Navigator screenOptions={{

@@ -1,10 +1,14 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import React from "react";
+import { AxiosResponse } from "axios";
+import React, { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { getFromSecureStore } from "../../../../utils/secureStore/secureStore";
+import usersAPI from "../../../../api/users.api";
+import { useAppDispatch } from "../../../../hooks/useAppDispatch";
+import { currentUserDataFetchRequest } from "../../../../redux/reducers/userReducer/userActions";
 import ValidatedTextInput from "../../inputs/ValidatedTextInput";
-import AuthFormSchema from "./schema";
-import { SectionName, ProfileEditContainer, InputsContainer, SubmitButton } from "./styles";
+import ErrorText from "../../_styles/ErrorText.styled";
+import ProfileEditFormSchema from "./schema";
+import { InputsContainer, ProfileEditContainer, SectionName, SubmitButton } from "./styles";
 
 interface IFormData {
     fullName: string,
@@ -20,11 +24,35 @@ interface IProps {
 const ProfileEditForm: React.FC<IProps> = () => {
 
     const { control, handleSubmit, reset, formState: { errors } } = useForm({
-        resolver: yupResolver(AuthFormSchema),
+        resolver: yupResolver(ProfileEditFormSchema),
     });
 
-    const onHandleSubmit: SubmitHandler<IFormData> = (data) => {
+    const [error, setError] = useState(null) // TODO: Вынести ошибку в reducer
+    const dispatch = useAppDispatch()
 
+    const onHandleSubmit: SubmitHandler<IFormData> = async (formData) => {
+
+        const data = {};
+
+        for (let key in formData) {
+            if (formData[key] !== undefined) {
+                data[key] = formData[key]
+            }
+        }
+
+        if (Object.getOwnPropertyNames(data).length === 0)
+            return
+
+        usersAPI.changeCurrentUserData(formData).then((response: AxiosResponse) => { // TODO: Вынести логику по запросам и dispatch в redux saga и reducer
+            dispatch(currentUserDataFetchRequest())
+        }).catch(error => { setError('Неверно введен старый (текущий) пароль') })
+
+        reset({
+            fullName: undefined,
+            oldPassword: undefined,
+            newPassword: undefined,
+            confirmNewPassword: undefined,
+        })
     }
 
     return (
@@ -88,7 +116,14 @@ const ProfileEditForm: React.FC<IProps> = () => {
                 />
             </InputsContainer>
 
-            <SubmitButton title="Сохранить изменения" />
+            { // TODO: Получать ошибку из reducer
+                error &&
+                <ErrorText style={{ marginBottom: 15, alignSelf: "center" }}>
+                    {error}
+                </ErrorText>
+            }
+
+            <SubmitButton onPress={handleSubmit(onHandleSubmit)} title="Сохранить изменения" />
 
         </ProfileEditContainer>
     );

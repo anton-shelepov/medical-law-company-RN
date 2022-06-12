@@ -10,10 +10,6 @@ const AuthScreen: React.FC = () => {
 
     const [theme] = useTheme()
 
-    useEffect(() => {
-        setStatusBarBackgroundColor(darkTheme.BACKGROUND_COLOR, false)
-    }, [])
-
     return (
         <DarkContainer>
             <Logo marginTop={170} />

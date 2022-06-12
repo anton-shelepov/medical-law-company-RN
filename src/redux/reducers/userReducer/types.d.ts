@@ -1,6 +1,6 @@
 import { Action, ActionType } from "typesafe-actions";
 import { IAuthFormData } from "../../../components/_common/forms/AuthForm";
-import { LOGOUT_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS, SIGNIN_FAILURE, SIGNIN_REQUEST, SIGNIN_SUCCESS } from "../../../constants/actionTypes";
+import { CURRENT_USER_DATA_FETCH_FAILURE, CURRENT_USER_DATA_FETCH_REQUEST, CURRENT_USER_DATA_FETCH_SUCCESS, LOGOUT_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS, SIGNIN_FAILURE, SIGNIN_REQUEST, SIGNIN_SUCCESS } from "../../../constants/actionTypes";
 import { AppRoles } from "../../../constants/enums";
 import { StateError } from "../../../types/errors";
 import * as actions from "./userActions";
@@ -8,11 +8,11 @@ import * as actions from "./userActions";
 // User reducer state
 
 export interface IUserState {
-    data: UserData | {},
+    data: UserData,
     accessToken: string,
     refreshToken: string,
     isAuth: boolean,
-    error: StateError | {},
+    error: StateError | null,
     isLoading: boolean,
 }
 
@@ -30,7 +30,7 @@ export type UserData = {
 
 export interface ISigninRequest extends Action {
     type: typeof SIGNIN_REQUEST
-    payload: IAuthFormData,
+    payload: IAuthFormData
 }
 
 export interface ISigninSuccess extends Action {
@@ -40,7 +40,7 @@ export interface ISigninSuccess extends Action {
 
 export interface ISigninFailure extends Action {
     type: typeof SIGNIN_FAILURE
-    payload: StateError,
+    payload: StateError
 }
 
 export interface ILogoutRequest extends Action {
@@ -53,7 +53,21 @@ export interface ILogoutSuccess extends Action {
 
 export interface ILogoutFailure extends Action {
     type: typeof LOGOUT_FAILURE
-    payload: string | unknown,
+    payload: string | unknown
+}
+
+export interface ICurrentUserDataFetchRequest extends Action {
+    type: typeof CURRENT_USER_DATA_FETCH_REQUEST
+}
+
+export interface ICurrentUserDataFetchSuccess extends Action {
+    type: typeof CURRENT_USER_DATA_FETCH_SUCCESS
+    payload: UserData
+}
+
+export interface ICurrentUserDataFetchFailure extends Action {
+    type: typeof CURRENT_USER_DATA_FETCH_FAILURE
+    payload: StateError
 }
 
 // Common reducer types
