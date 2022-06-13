@@ -1,33 +1,52 @@
 import React, { useState } from "react";
-import { FlatList, useWindowDimensions } from "react-native";
+import { FlatList, RefreshControl, useWindowDimensions } from "react-native";
 import { TabBar, TabView } from "react-native-tab-view";
 import { RecommendationGroups } from "../../constants/enums";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import useRefresh from "../../hooks/useRefresh";
 import { useTheme } from "../../hooks/useTheme";
+import { recommendationsFetchRequest } from "../../redux/reducers/recommendationsReducer/recommendationsActions";
 import { RecommendationItem } from "../../redux/reducers/recommendationsReducer/types";
+import ActivityIndicatorView from "../ActivityIndicatorView";
 import RecommendationCard from "../RecommendationCard";
 import TabText from "../_common/_styles/TabText.styled";
 
 
 interface IProps {
     recommendations: RecommendationItem[],
+    isLoading: boolean,
 }
 
-const RecommendationsTabView: React.FC<IProps> = ({ recommendations }) => {
+const RecommendationsTabView: React.FC<IProps> = ({ recommendations, isLoading }) => {
 
     const [index, setIndex] = useState(0)
     const [theme] = useTheme()
-
     const layout = useWindowDimensions();
+
+    const [refreshing, onRefresh] = useRefresh(0);
+
+    const dispatch = useAppDispatch();
 
     const [routes] = useState([
         { key: RecommendationGroups.DOCTOR, title: 'Врач' },
         { key: RecommendationGroups.LAWYER, title: 'Юрист' }
     ])
 
+    const onHandleRefresh = () => {
+        onRefresh();
+        dispatch(recommendationsFetchRequest(recommendations[0].receiverId))
+    }
+
     const RecommendationFlatList: React.FC<{ group: RecommendationGroups }> = ({ group }) => {
         return (
             <FlatList
                 data={recommendations}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={refreshing}
+                        onRefresh={onHandleRefresh}
+                    />
+                }
                 renderItem={({ item }: { item: RecommendationItem }) => (item.group === group) &&
                     <RecommendationCard recommendationData={item} />
                 }
@@ -39,10 +58,14 @@ const RecommendationsTabView: React.FC<IProps> = ({ recommendations }) => {
         switch (route.key) {
 
             case RecommendationGroups.DOCTOR:
-                return <RecommendationFlatList group={RecommendationGroups.DOCTOR} />
+                return isLoading
+                    ? <ActivityIndicatorView />
+                    : <RecommendationFlatList group={RecommendationGroups.DOCTOR} />
 
             case RecommendationGroups.LAWYER:
-                return <RecommendationFlatList group={RecommendationGroups.LAWYER} />
+                return isLoading
+                    ? <ActivityIndicatorView />
+                    : <RecommendationFlatList group={RecommendationGroups.LAWYER} />
 
             default:
                 return null;

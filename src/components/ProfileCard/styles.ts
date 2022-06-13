@@ -5,8 +5,8 @@ import UserImage from "../_common/_styles/UserImage.styled";
 
 export const ProfileImage = styled(UserImage)`
   margin-top: 10px;
-  width: 120px;
-  height: 120px;
+  min-width: 200px;
+  min-height: 200px;
   margin-bottom: 15px;
 `
 

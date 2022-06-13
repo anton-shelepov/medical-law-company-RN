@@ -1,4 +1,5 @@
 import { AxiosResponse } from "axios";
+import { RecommendationStatuses } from "../constants/enums";
 import privateClient from "./privateClient.config";
 
 
@@ -17,6 +18,20 @@ const recommendationDetailsAPI = {
         )
         return response.data;
     },
+
+    async createRecommendationResult(data: { resultText: string }, userId: number, recommendationId: number) {
+        return await privateClient.post(
+            `users/${userId}/recommendations/${recommendationId}/results`,
+            data
+        )
+    },
+
+    async updateRecommendationStatus(status: RecommendationStatuses, userId: number, recommendationId: number) {
+        return await privateClient.patch(
+            `users/${userId}/recommendations/${recommendationId}`,
+            { status },
+        )
+    }
 }
 
 export default recommendationDetailsAPI;

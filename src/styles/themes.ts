@@ -16,7 +16,7 @@ export const darkTheme: Theme = {
     CARD_EXPANDED_BACKGROUND_COLOR: "rgb(65,65,65)",
     CARD_BORDER_COLOR: "#363636",
     IN_PROCESS_COLOR: "rgba(197,197,129,0.63)",
-    DONE_COLOR: "#05a600",
+    DONE_COLOR: "#048500",
     MESSAGE_TO_BACKGROUND_COLOR: "#3a3a3a",
     MESSAGE_FROM_BACKGROUND_COLOR: "#292929",
 };
@@ -37,7 +37,7 @@ export const lightTheme: Theme = {
     CARD_EXPANDED_BACKGROUND_COLOR: "rgb(248,248,248)",
     CARD_BORDER_COLOR: "#efefef",
     IN_PROCESS_COLOR: "rgba(162,159,40,0.7)",
-    DONE_COLOR: "#05a600",
+    DONE_COLOR: "#41a538",
     MESSAGE_TO_BACKGROUND_COLOR: "#ffe5e5",
     MESSAGE_FROM_BACKGROUND_COLOR: "#ffffff",
 };

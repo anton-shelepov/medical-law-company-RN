@@ -1,15 +1,27 @@
 import React from "react";
-import { View } from "react-native";
-import Container from "../components/_common/_styles/Container.styled";
+import { RefreshControl } from "react-native";
+import RecommendationsStatistics from "../components/RecommendationsStatistics";
 import ServicesPackage from "../components/ServicesPackage";
+import Workplans from "../components/Workplans";
+import ScrollableContainer from "../components/_common/_styles/ScrollableContainer.styled";
+import useRefresh from "../hooks/useRefresh";
 
 
 const HomeScreen: React.FC = () => {
+
+    const [refreshing, onRefresh] = useRefresh(1000);
+    console.log('home render')
     return (
-        <Container>
+        <ScrollableContainer refreshControl={
+            <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+            />
+        } >
             <ServicesPackage />
-            <View style={{flex: 1}}></View>
-        </Container>
+            <RecommendationsStatistics />
+            <Workplans />
+        </ScrollableContainer>
     )
 }
 

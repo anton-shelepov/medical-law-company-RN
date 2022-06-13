@@ -1,6 +1,7 @@
 import React from "react";
 import { useTheme } from "../../hooks/useTheme";
 import { UserRecommendationResult } from "../../redux/reducers/recommendationDetailsReducer/types";
+import transformDateToString from "../../scripts/tranformDateToString";
 import globalStyles from "../../styles/globalStyles";
 import IoniconsSelector from "../../utils/IoniconsSelector";
 import Accordion from "../_common/_styles/Accordion.styled";
@@ -26,10 +27,12 @@ const UserRecommendationResultAccordion: React.FC<UserRecommendationResult> =
             />
         )
 
+        const resultCreatedDate = transformDateToString(createdAt)
+
         return (
             <AccordionContainer>
                 <Accordion
-                    title={`Результат от ${createdAt}`}
+                    title={`Результат от ${resultCreatedDate}`}
                     right={AccordionTitleRight}
                     left={AccordionTitleLeft}
                 >
@@ -37,7 +40,7 @@ const UserRecommendationResultAccordion: React.FC<UserRecommendationResult> =
                         <AccordionText title={resultText} />
                     </>
                 </Accordion>
-            </AccordionContainer>
+            </AccordionContainer >
         )
     }
 

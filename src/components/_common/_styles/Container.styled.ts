@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 import { Theme } from "../../../redux/reducers/themeReducer/types";
 
 interface IContainerProps {
-    theme: Theme
+  theme: Theme
 }
 
 const Container = styled.SafeAreaView<IContainerProps>`

@@ -25,12 +25,11 @@ const RecommendationsScreen: React.FC<RecommendationsProps> = ({ route: { params
             dispatch(recommendationsFetchRequest(decodedAccessToken.sub))
     }, [])
 
-    if (recommendations.isLoading) {
-        return <ActivityIndicatorView />
-    }
-
     return (
-        <RecommendationsTabView recommendations={recommendations.data} />
+        <RecommendationsTabView
+            isLoading={recommendations.isLoading}
+            recommendations={recommendations.data}
+        />
     )
 }
 

@@ -5,6 +5,7 @@ import { TouchableOpacity } from "react-native";
 import userImagePlaceholder from "../../../assets/images/user-image-placeholder.webp";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { RootTabParamList } from "../../navigators/RootTabNavigator";
+import getPublicImageSrc from "../../scripts/getPublicImageSrc";
 import UserImage from "../_common/_styles/UserImage.styled";
 import { DrawerContainer, UserName } from "./styles";
 
@@ -17,9 +18,9 @@ const DrawerProfileInfo: React.FC = () => {
         <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
             <DrawerContainer>
                 <UserImage
-                    width="80px"
-                    height="80px"
-                    source={imageURL ? { uri: imageURL } : userImagePlaceholder}
+                    width="120px"
+                    height="120px"
+                    source={imageURL ? { uri: getPublicImageSrc(imageURL) } : userImagePlaceholder}
                 />
                 <UserName>{fullName}</UserName>
             </DrawerContainer>

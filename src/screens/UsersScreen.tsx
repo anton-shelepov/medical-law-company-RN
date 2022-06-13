@@ -17,16 +17,17 @@ const UsersScreen: React.FC = () => {
 
     const users = useAppSelector(state => state.usersList)
 
-    if (users.isLoading) {
-        return <ActivityIndicatorView />
-    }
-
     return (
         <Container>
-            <FlatList
-                data={users.data.users}
-                renderItem={({ item }) => <UserCardListItem user={item} />}
-            />
+            {!users.isLoading
+                ? <FlatList
+                    data={users.data.users}
+                    renderItem={({ item }) => <UserCardListItem user={item} />}
+                />
+
+                : <ActivityIndicatorView />
+            }
+
         </Container>
     )
 }

@@ -1,13 +1,12 @@
 import React from "react";
-import { ActivityIndicator } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 import globalStyles from "../../styles/globalStyles";
-import Container from "../_common/_styles/Container.styled";
 
 const ActivityIndicatorView: React.FC = () => {
     return (
-        <Container>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <ActivityIndicator color={globalStyles.RED_COLOR_TONE} size='large' />
-        </Container>
+        </View>
     )
 }
 

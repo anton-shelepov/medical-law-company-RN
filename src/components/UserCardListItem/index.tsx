@@ -4,6 +4,7 @@ import React from "react";
 import userImagePlaceholder from "../../../assets/images/user-image-placeholder.webp";
 import { RootStackParamList } from "../../navigators/RootStackNavigator";
 import { UsersListItem } from "../../redux/reducers/usersListReducer/types";
+import getPublicImageSrc from "../../scripts/getPublicImageSrc";
 import ButtonWithIcon from "../_common/buttons/ButtonWithIcon";
 import FilledButton from "../_common/buttons/FilledButton";
 import ListItemWrapper from "../_common/_styles/ListItemWrapper.styled";
@@ -35,9 +36,9 @@ const UserCardListItem: React.FC<IProps> = ({ user: { fullName, id, phoneNumber,
             <ContainerTop>
                 <BlockLeft>
                     <UserImage
-                        width="65px"
-                        height="65px"
-                        source={imageURL ? { uri: imageURL } : userImagePlaceholder}
+                        width="75px"
+                        height="75px"
+                        source={imageURL ? { uri: getPublicImageSrc(imageURL) } : userImagePlaceholder}
                     />
                 </BlockLeft>
                 <BlockRight>

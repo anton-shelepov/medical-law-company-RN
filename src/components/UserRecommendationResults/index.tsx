@@ -1,18 +1,25 @@
 import React from "react";
 import { FlatList } from "react-native";
 import { UserRecommendationResult } from "../../redux/reducers/recommendationDetailsReducer/types";
+import ActivityIndicatorView from "../ActivityIndicatorView";
 import UserRecommendationResultAccordion from "../UserRecommendationResultAccordion";
 
 
 interface IProps {
-    recommendationResultsData: UserRecommendationResult[]
+    recommendationResultsData: UserRecommendationResult[],
+    isLoading: boolean,
 }
 
-const UserRecommendationResults: React.FC<IProps> = ({recommendationResultsData}) => {
+const UserRecommendationResults: React.FC<IProps> = ({ recommendationResultsData, isLoading }) => {
+
+    if (isLoading) {
+        return <ActivityIndicatorView />
+    }
+
     return (
         <FlatList
             data={recommendationResultsData}
-            renderItem={({item}) => (
+            renderItem={({ item }) => (
                 <UserRecommendationResultAccordion {...item} />
             )}
         />

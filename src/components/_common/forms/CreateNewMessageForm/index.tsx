@@ -1,8 +1,6 @@
-import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import IoniconsSelector from "../../../../utils/IoniconsSelector";
-import AuthFormSchema from "./schema";
 import { Container, MessageButton, MessageTextInput } from "./styles";
 
 interface IFormData {
@@ -10,17 +8,21 @@ interface IFormData {
 }
 
 interface IProps {
-    textInputPlaceholder?: string
+    textInputPlaceholder?: string,
+    withFilePickerButton?: boolean,
+    onMessageSubmit: (data: { messageText: string }) => void
 }
 
-const CreateNewMessageForm: React.FC<IProps> = ({ textInputPlaceholder = "Сообщение..." }) => {
+const CreateNewMessageForm: React.FC<IProps> = ({
+    textInputPlaceholder = "Сообщение...",
+    withFilePickerButton = true,
+    onMessageSubmit,
+}) => {
 
-    const { control, handleSubmit, reset, formState: { errors } } = useForm({
-        resolver: yupResolver(AuthFormSchema),
-    });
+    const { control, handleSubmit, reset } = useForm();
 
     const onHandleSubmit: SubmitHandler<IFormData> = (data) => {
-        console.log(data)
+        onMessageSubmit(data)
         reset({
             messageText: '',
         })
@@ -32,15 +34,21 @@ const CreateNewMessageForm: React.FC<IProps> = ({ textInputPlaceholder = "Соо
 
     return (
         <Container>
-            <MessageButton onPress={onHandleImageSelect}>
-                <IoniconsSelector iconName="attach" size={30} color="#838383" />
-            </MessageButton>
+            {withFilePickerButton &&
+                <MessageButton onPress={onHandleImageSelect}>
+                    <IoniconsSelector iconName="attach" size={30} color="#838383" />
+                </MessageButton>
+            }
 
             <Controller
                 control={control}
+                rules={{ required: true }}
                 render={({ field }) => (
                     <MessageTextInput
+                        {...field}
+                        onChangeText={field.onChange}
                         multiline={true}
+                        style={!withFilePickerButton && { paddingLeft: 15 }}
                         placeholder={textInputPlaceholder}
                     />
                 )}

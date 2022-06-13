@@ -1,4 +1,7 @@
-const transformDateToString = (date: Date) => {
+const transformDateToString = (date: Date | string) => {
+    if (typeof date === 'string') {
+        date = new Date(date)
+    }
     function correctDayAndMonthFormat(dayOrMonth: number) {
         const dayOrMonthString: string = dayOrMonth.toString()
         if (dayOrMonthString.length === 1) {

@@ -46,11 +46,11 @@ const RecommendationCard: React.FC<IProps> =
                     <TitleText>{name}</TitleText>
                     <Status>
                         <StatusText color={isInProcess ? theme.IN_PROCESS_COLOR : theme.DONE_COLOR}>
-                            {isInProcess ? "В процессе" : "Готово"}
+                            {isInProcess ? "В процессе" : "Выполнено"}
                         </StatusText>
                         <IoniconsSelector
                             color={isInProcess ? theme.IN_PROCESS_COLOR : theme.DONE_COLOR}
-                            iconName={isInProcess ? "ios-time" : "ios-time"}
+                            iconName={isInProcess ? "ios-time" : "checkmark-circle"}
                         />
                     </Status>
                 </Title>

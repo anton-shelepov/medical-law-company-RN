@@ -12,7 +12,7 @@ const employeeTabs = () => {
             <Tab.Screen
                 name={"Users"}
                 component={UsersScreen}
-                options={{ title: 'Пользователи' }}
+                options={{ title: 'Ваши клиенты' }}
             />
             <Tab.Screen
                 name={"Profile"}
