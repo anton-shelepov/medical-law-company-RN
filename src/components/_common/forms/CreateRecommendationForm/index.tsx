@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { AxiosResponse } from "axios";
 import React, { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
@@ -25,6 +26,7 @@ const CreateRecommendationForm: React.FC<IProps> = ({ userId, group }) => {
 
     const [dateValue, setDateValue] = useState(new Date());
 
+    const navigation = useNavigation();
     const dispatch = useAppDispatch()
 
     const onHandleSubmit: SubmitHandler<ICreateRecommendationFormData> = async (formData) => { // TODO: remove async
@@ -39,6 +41,7 @@ const CreateRecommendationForm: React.FC<IProps> = ({ userId, group }) => {
             name: '',
             description: '',
         })
+        navigation.goBack();
     }
 
     return (

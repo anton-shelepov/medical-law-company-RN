@@ -10,7 +10,7 @@ import useRefresh from "../hooks/useRefresh";
 const HomeScreen: React.FC = () => {
 
     const [refreshing, onRefresh] = useRefresh(1000);
-    console.log('home render')
+
     return (
         <ScrollableContainer refreshControl={
             <RefreshControl

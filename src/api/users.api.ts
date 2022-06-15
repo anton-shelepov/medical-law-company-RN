@@ -38,6 +38,11 @@ const usersAPI = {
                 return formData; // this is doing the trick
             },
         })
+    },
+
+    async fetchOneUser(userId: Number) {
+        return await privateClient.get(
+            usersAPI.path + userId)
     }
 
 }

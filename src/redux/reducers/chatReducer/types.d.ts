@@ -1,6 +1,5 @@
 import { Action } from "redux";
 import { ActionType } from "typesafe-actions";
-import { messageTypes } from "../../../constants/enums";
 import * as actions from "./recommendationsActions";
 
 // Chat reducer state
@@ -14,9 +13,9 @@ export interface IChatState {
 
 export type Message = {
     id: number,
-    messageText: string,
-    type: messageTypes,
-    sentDate: string,
+    text: string,
+    userId: number,
+    createdAt: string,
 }
 
 export type ChatInfo = {

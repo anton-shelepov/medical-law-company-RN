@@ -1,6 +1,5 @@
-import {Action} from "redux";
-import {ActionType} from "typesafe-actions";
-import { messageTypes } from "../../../constants/enums";
+import { Action } from "redux";
+import { ActionType } from "typesafe-actions";
 import * as actions from "./recommendationsActions";
 
 // Root reducer state
@@ -13,11 +12,10 @@ export interface IChatsState {
 
 export type ChatsItem = {
     id: number,
-    userImageSrc: string,
-    chatName?: string,
-    userName: string,
-    message: string,
-    messageType: messageTypes,
+    imageURL: string,
+    position?: string,
+    fullName: string,
+    lastMessage: string,
 }
 
 // Actions

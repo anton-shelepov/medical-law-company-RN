@@ -1,22 +1,28 @@
 import React from "react";
 import { View } from "react-native";
-import { useAppSelector } from "../../hooks/useAppSelector";
-import { ChatName, Container, UserName, HeaderUserImage } from "./styles";
+import userImagePlaceholder from "../../../assets/images/user-image-placeholder.webp";
+import getPublicImageSrc from "../../scripts/getPublicImageSrc";
+import translateEmployeePosition from "../../scripts/translateEmployeePosition";
+import { ChatName, Container, HeaderUserImage, UserName } from "./styles";
+
 
 interface IProps {
-    id: number
+    data: {
+        fullName: string,
+        imageURL: string,
+        position: string,
+    }
 }
 
-const ChatHeaderTitle: React.FC<IProps> = ({id}) => {
+const ChatHeaderTitle: React.FC<IProps> = ({ data: { fullName, imageURL, position } }) => {
 
-    const {chatName, userName, userImageSrc} = useAppSelector(state => state.chat.chatInfo)
 
     return (
         <Container>
-            <HeaderUserImage source={{uri: userImageSrc}} />
+            <HeaderUserImage source={imageURL ? { uri: getPublicImageSrc(imageURL) } : userImagePlaceholder} />
             <View>
-                <ChatName>{chatName}</ChatName>
-                <UserName>{userName}</UserName>
+                {position && <ChatName>{translateEmployeePosition(position)}</ChatName>}
+                <UserName>{fullName}</UserName>
             </View>
         </Container>
     )

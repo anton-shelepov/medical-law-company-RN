@@ -26,13 +26,13 @@ privateClient.interceptors.response.use(
 
     // Return response if there not any error
     (response: AxiosResponse) => {
-        console.log('response', response);
+        console.log(response)
         return response
     },
 
     // If response have a error
     async function (error: AxiosError) { // TODO: Сделать обновление недействительного токена доступа
-        console.log('error', error);
+        console.log(error)
         const originalRequest = error.config
 
         const isRefreshAttempted = originalRequest.url.includes('auth/refresh')

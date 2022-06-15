@@ -38,7 +38,10 @@ const UserCardListItem: React.FC<IProps> = ({ user: { fullName, id, phoneNumber,
                     <UserImage
                         width="75px"
                         height="75px"
-                        source={imageURL ? { uri: getPublicImageSrc(imageURL) } : userImagePlaceholder}
+                        source={imageURL
+                            ? { uri: getPublicImageSrc(imageURL) }
+                            : userImagePlaceholder
+                        }
                     />
                 </BlockLeft>
                 <BlockRight>
@@ -47,9 +50,18 @@ const UserCardListItem: React.FC<IProps> = ({ user: { fullName, id, phoneNumber,
                 </BlockRight>
             </ContainerTop>
             <ContainerBottom>
-                <ButtonWithIcon onPress={onHandleNewRecommendationClick} title="Рекомендация" iconName="add-circle-sharp" />
-                <ButtonWithIcon onPress={onHandleChatClick} title="Открыть чат" iconName="ios-chatbubbles" />
-                <ButtonWithIcon onPress={onHandleRecommendationsClick} title="Рекомендации" iconName="bookmarks" />
+                <ButtonWithIcon
+                    onPress={onHandleNewRecommendationClick}
+                    title="Рекомендация"
+                    iconName="add-circle-sharp" />
+                <ButtonWithIcon
+                    onPress={onHandleChatClick}
+                    title="Открыть чат"
+                    iconName="ios-chatbubbles" />
+                <ButtonWithIcon
+                    onPress={onHandleRecommendationsClick}
+                    title="Рекомендации"
+                    iconName="bookmarks" />
             </ContainerBottom>
             <FilledButton title="Открепить" />
         </ListItemWrapper>

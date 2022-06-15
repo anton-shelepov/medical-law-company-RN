@@ -15,9 +15,10 @@ import TabText from "../_common/_styles/TabText.styled";
 interface IProps {
     recommendations: RecommendationItem[],
     isLoading: boolean,
+    userId: number
 }
 
-const RecommendationsTabView: React.FC<IProps> = ({ recommendations, isLoading }) => {
+const RecommendationsTabView: React.FC<IProps> = ({ recommendations, isLoading, userId }) => {
 
     const [index, setIndex] = useState(0)
     const [theme] = useTheme()
@@ -34,7 +35,7 @@ const RecommendationsTabView: React.FC<IProps> = ({ recommendations, isLoading }
 
     const onHandleRefresh = () => {
         onRefresh();
-        dispatch(recommendationsFetchRequest(recommendations[0].receiverId))
+        dispatch(recommendationsFetchRequest(userId))
     }
 
     const RecommendationFlatList: React.FC<{ group: RecommendationGroups }> = ({ group }) => {

@@ -1,7 +1,9 @@
+import * as ImagePicker from 'expo-image-picker';
 import React from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import IoniconsSelector from "../../../../utils/IoniconsSelector";
 import { Container, MessageButton, MessageTextInput } from "./styles";
+
 
 interface IFormData {
     messageText: string,
@@ -28,8 +30,28 @@ const CreateNewMessageForm: React.FC<IProps> = ({
         })
     }
 
-    const onHandleImageSelect = () => {
+    const onHandleImageSelect = async () => {
+        try {
+            const result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.Images,
+                allowsEditing: true,
+                quality: 1,
+            })
 
+            if (result.cancelled === false) {
+                // const formData = new FormData();
+                // const image: any = {
+                //     uri: result.uri,
+                //     name: result.uri.split('/').pop(),
+                //     type: 'image/' + result.uri.split('.').pop(),
+                // }
+                // formData.append('image', image)
+                console.log(result.base64)
+            }
+            return false
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (

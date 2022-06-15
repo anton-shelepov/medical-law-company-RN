@@ -10,12 +10,11 @@ import { pinnedUsersFetchRequest } from "../redux/reducers/usersListReducer/user
 const UsersScreen: React.FC = () => {
 
     const dispatch = useAppDispatch();
+    const users = useAppSelector(state => state.usersList)
 
     useEffect(() => {
         dispatch(pinnedUsersFetchRequest())
     }, [])
-
-    const users = useAppSelector(state => state.usersList)
 
     return (
         <Container>
@@ -24,10 +23,8 @@ const UsersScreen: React.FC = () => {
                     data={users.data.users}
                     renderItem={({ item }) => <UserCardListItem user={item} />}
                 />
-
                 : <ActivityIndicatorView />
             }
-
         </Container>
     )
 }
